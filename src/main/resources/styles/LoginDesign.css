@@ -1,0 +1,189 @@
+/*
+    Author     : Jocsan Ramirez
+*/
+
+/*Design Loading Screen*/
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+.mainFormLoading{
+    -fx-background-color: linear-gradient(to top right, #000428, #004e92);
+    -fx-border-width: .2px .4px .4px .4px;
+    -fx-background-radius: 18 18 18 18;
+    -fx-border-radius: 0 0 18 18;
+    -fx-border-width:5;
+}
+#circle1{
+    -fx-fill: linear-gradient(to top right, #000428, #004e92);
+    -fx-stroke: linear-gradient(to bottom right, #4e54c8, #0082c8, #0082c8, #4e54c8 );
+    -fx-stroke-dash-array: 90;
+}
+#circle2{
+    -fx-fill: linear-gradient(to top right, #000428, #004e92);
+    -fx-stroke: linear-gradient(to bottom right, #4e54c8, #2ebf91);
+    -fx-stroke-dash-array: 90;
+}
+.labelText{
+    -fx-font-family:'Varela Round', sans-serif;
+    -fx-font-size: 28pt;
+    -fx-text-fill: linear-gradient(to bottom right, #4e54c8, #2ebf91);
+}
+
+.paneLoadingScreen{
+    -fx-background-image:url('../images/library.png');
+    -fx-background-size: stretch;
+    -fx-padding: 5 10 10 10;
+}
+.progress-bar{
+    -fx-pref-width: 200px;
+    -fx-pref-height: 15px;
+}
+.progress-bar .track{
+    -fx-background-color: transparent;
+    -fx-background-radius: 5;
+}
+.progress-bar .bar{
+    -fx-background-color: linear-gradient(to left, aquamarine,royalblue);
+}
+/*END LOADING SPLASH SCREEN*/
+
+
+.main-form{
+    -fx-background-color: linear-gradient(to top right, #000428, #004e92);
+    -fx-border-width: .2px .4px .4px .4px;
+    -fx-background-radius: 18 18 18 18;
+    -fx-border-radius: 0 0 18 18;
+    -fx-border-width:5;
+}
+
+.paneFondo{
+
+    -fx-background-color: FFFFFF;
+    -fx-background-radius: 0 18 18 0;
+}
+
+.paneFondo2{
+
+    -fx-background-color: FFFFFF;
+    -fx-background-radius: 0 18 18 0;
+}
+
+
+.paneImg{
+
+    -fx-background-image:url('../images/user1.png');
+}
+
+.paneImg2{
+    -fx-background-image:url('../images/add-user.png');
+}
+
+
+.white-form{
+    -fx-background-color: #fff;
+    -fx-background-radius: 6px;
+}
+
+.shadow{
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8,0,0,0);
+}
+
+.back{
+    -fx-background-color: transparent;
+    -fx-cursor:hand;
+}
+
+.back:hover{
+    -fx-background-color: #ddd;
+}
+
+.btnClose{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.btnClose:hover{
+    -fx-background-color: #f43f57;
+}
+
+.btnMinimize{
+    -fx-background-color: transparent;
+    -fx-cursor:hand;
+}
+
+.btnMinimize:hover{
+    -fx-background-color: #ddd;
+}
+
+.textField{
+    -fx-background-color: transparent;
+    -fx-text-fill: #000000;
+    -fx-text-inner-color: #fff;
+    -fx-border-color: #1565C0;
+    -fx-border-width: 0px 0px .4px 0px;
+    -fx-font-family: Tahoma;
+    -fx-font-size: 11pt;
+}
+
+.textField:focused{
+    -fx-border-color: #1565C0;
+    -fx-border-width: 0px 0px 1px 0px;
+}
+
+.loginBtn{
+
+    -fx-background-color:linear-gradient(to bottom right, #35529d, #2371d0);
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font: 14px "Tahoma";
+    -fx-cursor:hand;
+}
+
+.loginBtnBack{
+
+    -fx-background-color:linear-gradient(to bottom right, #35529d, #2371d0);
+    -fx-background-radius: 8px;
+    -fx-text-fill: #fff;
+    -fx-font: 14px "Tahoma";
+    -fx-cursor:hand;
+}
+
+.loginBtn:hover{
+    -fx-background-color:linear-gradient(to bottom right, #3862c2, #4284d0);
+}
+
+.hyperlink{
+    -fx-underline:false;
+    -fx-font-family: Tahoma;
+    -fx-font-size: 14px;
+    -fx-text-fill:  #6359fa;
+    -fx-border-color:transparent;
+    -fx-border-width:0px;
+}
+.hyperlink:hover{
+    -fx-text-fill:  #0F9B8E;
+}
+
+
+.combo-box{
+    -fx-background-color:linear-gradient(to bottom right, #35529d, #2371d0);
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+}
+
+.combo-box .cell{
+    -fx-text-fill: #fff;
+    -fx-font: 14px "Tahoma";
+}
+
+.combo-box .combo-box-popup .list-cell:hover {
+    -fx-text-fill: #47C072;
+    -fx-background-color: #03719C;
+}
+
+.combo-box .combo-box-popup .list-view, .combo-box .combo-box-popup .list-cell {
+    -fx-background-color: #000;
+    -fx-text-fill: white ;
+}
+
+
