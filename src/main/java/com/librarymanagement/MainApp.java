@@ -1,4 +1,5 @@
 package com.librarymanagement;
+
 import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Preloader;
@@ -21,7 +22,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/hello.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Reports.fxml")));
         Scene scene = new Scene(root);
 
         root.setOnMousePressed((MouseEvent event) -> {
