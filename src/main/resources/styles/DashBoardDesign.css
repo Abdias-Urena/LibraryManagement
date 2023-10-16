@@ -1,0 +1,165 @@
+
+.btn-minimize{
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+}
+
+.btn-minimize:hover{
+    -fx-background-color:#16222A;
+}
+
+.btn-close{
+   -fx-background-color:transparent;
+    -fx-cursor:hand;
+
+}
+
+.btn-close:hover{
+    -fx-background-color:#FE2C54;
+}
+
+.textfield-search{
+    -fx-backgroud-color: #f5f5f5;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 6px;
+    -fx-font-family: Tahoma;
+    -fx-font-size: 14px;
+    -fx-padding: 0px 0px 0px 28px;
+}
+
+.textfield-search:focused{
+    -fx-background-color: #fff;
+}
+
+
+.shadow{
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8,0,0,0);
+}
+
+.anchorPane{
+   -fx-background-color: linear-gradient(to bottom right, #3A6073,#3A6073);
+    -fx-opacity: 5.5;
+
+}
+
+.menu-bar {
+    -fx-background-color: linear-gradient(to bottom left, #00409E, #00325E);
+    //-fx-background-color: linear-gradient(to bottom left, #00409E,#0052B0, #000F59);
+    -fx-opacity: 2.5;
+}
+.menu-bar .label {
+    -fx-font-size: 14.0 pt;
+    -fx-font-family: "Tahoma";
+    -fx-text-fill: white;
+    -fx-padding: 10.0px;
+
+}
+.menu-bar .menu-button:hover, .menu-bar .menu-button:focused, .menu-bar .menu-button:showing {
+    -fx-background: black ;
+    -fx-opacity: 0.5;
+    -fx-text-fill: white;
+}
+
+.menu-item {
+    -fx-padding: 0.0em 0.0em 0.0em 0.0em;
+    -fx-text-fill: black;
+    -fx-background-color: white;
+}
+.menu-item .label{
+    -fx-font-size: 14.0 pt;
+    -fx-text-fill: black;
+}
+.menu-item .label:hover{
+    -fx-font-size: 14.0 pt;
+    -fx-background: black ;
+    -fx-text-fill: white;
+}
+.context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color:white ;
+    -fx-border-width: 0.2px;
+    -fx-border-color: black;
+    /** -fx-background-insets: 0.0, 1.0, 2.0;
+    -fx-background-radius: 0.0 6.0 6.0 6.0, 0.0 5.0 5.0 5.0, 0.0 4.0 4.0 4.0;
+    -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;
+    -fx-opacity: 0.9;*/
+}
+
+.jfxTabpane{
+      /*-fx-background-color: linear-gradient(to bottom right, #00325E, #008A9B);*/
+      /*-fx-background-color: linear-gradient(to bottom right, #000428, #021B79);*/
+     -fx-background-color:linear-gradient(to bottom left,  #004e92, #000428);
+     -fx-background-size: stretch;
+     -fx-background-image:url('../images/back.png');
+
+}
+
+
+/*TabPane Dashboard*/
+.tab-header-area .tab-header-background {
+ 	-fx-background-color: linear-gradient(to bottom left, #00409E, #00325E);
+}
+
+
+/*Estilos para las tablas*/
+
+.table-view {
+    -fx-background-color:transparent;
+    -fx-padding: 0px;
+    -fx-border-color: #00325E;
+    -fx-border-radius: 5px;
+    -fx-border-width: 5px;
+}
+.table-view .table-column{
+    -fx-alignment: CENTER;
+}
+
+.table-view .column-header-background{
+   -fx-background-color:  #00325E;
+   -fx-background-radius: 0px 0px 0px 0px;
+   -fx-background-insets: 0 0 0 0;
+
+}
+.table-view .column-header, .table-view .filler{
+    -fx-size:35px;
+    -fx-border-width: 0 0 10 0;
+    -fx-background-color:transparent;
+
+}
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-alignment: center       ;
+    -fx-background-radius: 30;
+}
+
+/* formato para las celdas del tableview*/
+.table-view .table-cell {
+    -fx-alignment: CENTER;
+    -fx-border-color: transparent -fx-table-cell-border-color transparent transparent;
+    -fx-font: 14px "Segoe UI";
+    -fx-wrap-text: true;
+    -fx-border-width: 0.083333em; /* 1 */
+    -fx-cell-size: 2.0em; /* 24 */
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+
+/*color de fondo para cuando el mouse este sobre la celda*/
+.table-cell:hover {
+    -fx-background-color: #8f94fb;
+    //-fx-background-color: #00C853;
+}
+
+
+/* color para filas vacias,
+// aplicar el mismo color cuando el mouse este sobre una celda de una fila vacia*/
+.table-row-cell:empty, .table-cell:empty:hover {
+    -fx-background-color: whitesmoke;
+}
+
+/*eliminar borde de celdas en las filas vacias*/
+.table-row-cell:empty .table-cell {
+    -fx-border-width: 0px;
+}

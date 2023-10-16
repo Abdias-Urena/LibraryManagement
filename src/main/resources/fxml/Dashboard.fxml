@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<BorderPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardController">
+   <top>
+        <MenuBar fx:id="menuBar" prefHeight="48.0" prefWidth="612.0" stylesheets="@../styles/DashBoardDesign.css" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu fx:id="menuArchivo" mnemonicParsing="false" text="Libro">
+                    <items>
+                        <MenuItem fx:id="menuConf" mnemonicParsing="false" onAction="#abrirConfiguracion" text="Configuracion">
+                            <graphic>
+                                <FontIcon iconColor="#008a9b" iconLiteral="fa-cog" iconSize="20" />
+                            </graphic>
+                        </MenuItem>
+                        <MenuItem fx:id="menuOrden" mnemonicParsing="false" onAction="#verOrdenPrincipal" text="Orden">
+                            <graphic>
+                                <FontIcon iconColor="#12b386" iconLiteral="fa-book" iconSize="20" />
+                            </graphic>
+                        </MenuItem>
+                  <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#salir" text="Cerrar Sesión">
+                     <graphic>
+                        <FontIcon iconColor="#e10f47" iconLiteral="fa-sign-out" iconSize="20" />
+                     </graphic>
+                  </MenuItem>
+                    </items>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fa-pencil-square-o" iconSize="20" />
+                    </graphic>
+            </Menu>
+                <Menu fx:id="menuInventario" mnemonicParsing="false" text="Inventario">
+                    <items>
+                        <MenuItem fx:id="menuVerMaterial" mnemonicParsing="false" onAction="#tablaMateriales" text="Ver materiales">
+                            <graphic>
+                                <FontIcon iconColor="#2196f3" iconLiteral="fa-search" iconSize="20" />
+                            </graphic>
+                        </MenuItem>
+                  <MenuItem fx:id="menuVerMantenimiento" mnemonicParsing="false" onAction="#mostrarMantenimiento" text="Mantenimiento">
+                     <graphic>
+                        <FontIcon iconColor="#2196f3" iconLiteral="fa-pencil-square-o" iconSize="20" />
+                     </graphic>
+                  </MenuItem>
+                    </items>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fa-truck" iconSize="20" />
+                    </graphic>
+            </Menu>
+                <Menu fx:id="menuOrdenes" mnemonicParsing="false" text="Ordenes">
+                    <items>
+                        <MenuItem fx:id="menuBorrador" mnemonicParsing="false" onAction="#verBorrador" text="Borrador">
+                            <graphic>
+                                <FontIcon iconLiteral="fa-sticky-note-o" iconSize="20" />
+                            </graphic>
+                            <accelerator>
+                                <KeyCodeCombination alt="ANY" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                            </accelerator>
+                        </MenuItem>
+                  <MenuItem fx:id="menuPresentada" mnemonicParsing="false" onAction="#verPresentada" text="Presentada">
+                     <graphic>
+                        <FontIcon iconColor="#475f94" iconLiteral="fa-pencil" iconSize="20" />
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F2" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuAceptada" mnemonicParsing="false" onAction="#verAceptada" text="Aceptada">
+                     <graphic>
+                        <FontIcon iconColor="#12b386" iconLiteral="fa-check-square-o" iconSize="20" />
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F3" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuProceso" mnemonicParsing="false" onAction="#verProceso" text="Proceso">
+                     <graphic>
+                        <FontIcon iconColor="#475f94" iconLiteral="fa-hourglass-2" iconSize="20" />
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuFinalizada" mnemonicParsing="false" onAction="#verFinalizada" text="Finalizada">
+                     <graphic>
+                        <FontIcon iconColor="#069af3" iconLiteral="fa-asl-interpreting" iconSize="20" />
+                     </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F5" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                    </items>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fa-book" iconSize="20" />
+                    </graphic>
+                </Menu>
+                <Menu fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios">
+                    <items>
+                  <MenuItem fx:id="verUsuarios" mnemonicParsing="false" onAction="#mostrarTablaUsuarios" text="Ver usuarios">
+                     <graphic>
+                        <FontIcon iconColor="#47c072" iconLiteral="fa-users" iconSize="20" />
+                     </graphic>
+                  </MenuItem>
+                    </items>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fa-user-secret" iconSize="20" />
+                    </graphic>
+                </Menu>
+            <Menu fx:id="menuClientes" mnemonicParsing="false" text="Clientes">
+               <items>
+                  <MenuItem fx:id="verClientes" mnemonicParsing="false" onAction="#mostrarClientes" text="Ver clientes">
+                     <graphic>
+                        <FontIcon iconColor="#47c072" iconLiteral="fa-users" iconSize="20" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+               <graphic>
+                  <FontIcon fill="WHITE" iconLiteral="fa-user-circle" iconSize="20" />
+               </graphic>
+            </Menu>
+            </menus>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <effect>
+            <DropShadow />
+         </effect>
+        </MenuBar>
+   </top>
+   <center>
+        <JFXTabPane fx:id="tabPane" prefHeight="361.0" prefWidth="600.0" styleClass="jfxTabpane" stylesheets="@../styles/DashBoardDesign.css" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
