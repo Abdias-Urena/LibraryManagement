@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +36,7 @@ public class LoanBooksController implements Initializable {
 
     @FXML
     private JFXTextField textNombre;
+
 
     @FXML
     void guardar(ActionEvent event) {

@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoanBooksController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="WHITE" strokeType="INSIDE" width="887.0">
          <fill>
@@ -91,14 +91,6 @@
             <JFXButton fx:id="btnGuardar" onAction="#guardar" style="-fx-background-color: #004e92;" text="Guardar" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="29">
                <graphic>
                   <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-save" iconSize="25" />
-               </graphic>
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnRegresarP" layoutX="10.0" layoutY="477.0" onAction="#regresarP" style="-fx-background-color: #004e92;" text="Regresar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="29">
-               <graphic>
-                  <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-arrow-circle-o-left" iconSize="25" />
                </graphic>
                <font>
                   <Font name="System Bold" size="18.0" />

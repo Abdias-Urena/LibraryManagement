@@ -69,7 +69,7 @@ public class DashboardController implements Initializable {
     @FXML
     private JFXTabPane tabPane;
 
-    private Tab tabLibros;
+    private Tab tabLibros, tabEquipos, tabLoanLibros, tabReports, tabLoanDevices;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,7 +80,7 @@ public class DashboardController implements Initializable {
     void abrirLibros(ActionEvent event) throws IOException {
         if (tabLibros == null) {
             AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Books.fxml")));
-            tabLibros = new Tab("LIBROS FISICOS", ap);
+            tabLibros = new Tab("Libros", ap);
 
             tabLibros.setGraphic(FontIcon.of(new FontIcon("fa-book").getIconCode(), 20, Color.valueOf("#fff")));
             tabLibros.setClosable(true);
@@ -97,17 +97,59 @@ public class DashboardController implements Initializable {
 
     @FXML
     void abrirEquipos(ActionEvent event) throws IOException {
+        if (tabEquipos == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Device.fxml")));
+            tabEquipos = new Tab("Equipos", ap);
 
+            tabEquipos.setGraphic(FontIcon.of(new FontIcon("fa-laptop").getIconCode(), 20, Color.valueOf("#fff")));
+            tabEquipos.setClosable(true);
+            tabEquipos.setOnClosed(event1 -> {
+
+                tabEquipos = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabEquipos);
+
+        }
+        tabPane.getSelectionModel().select(tabEquipos);
     }
 
     @FXML
-    void abrirPrestamosEquipos(ActionEvent event) {
+    void abrirPrestamosEquipos(ActionEvent event) throws IOException {
+        if (tabLoanDevices == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/LoanDeviceTable.fxml")));
+            tabLoanDevices = new Tab("Prestamo Equipos", ap);
 
+            tabLoanDevices.setGraphic(FontIcon.of(new FontIcon("fa-laptop").getIconCode(), 20, Color.valueOf("#fff")));
+            tabLoanDevices.setClosable(true);
+            tabLoanDevices.setOnClosed(event1 -> {
+
+                tabLoanDevices = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabLoanDevices);
+
+        }
+        tabPane.getSelectionModel().select(tabLoanDevices);
     }
 
     @FXML
-    void abrirPrestamosLibros(ActionEvent event) {
+    void abrirPrestamosLibros(ActionEvent event) throws IOException {
+        if (tabLoanLibros == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/LoanBooksTable.fxml")));
+            tabLoanLibros = new Tab("Prestamo Libros", ap);
 
+            tabLoanLibros.setGraphic(FontIcon.of(new FontIcon("fa-laptop").getIconCode(), 20, Color.valueOf("#fff")));
+            tabLoanLibros.setClosable(true);
+            tabLoanLibros.setOnClosed(event1 -> {
+
+                tabLoanLibros = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabLoanLibros);
+
+        }
+        tabPane.getSelectionModel().select(tabLoanLibros);
     }
 
     @FXML
@@ -121,8 +163,22 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    void mostrarReportes(ActionEvent event) {
+    void mostrarReportes(ActionEvent event) throws IOException {
+        if (tabReports == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/ReportTable.fxml")));
+            tabReports = new Tab("Reportes", ap);
 
+            tabReports.setGraphic(FontIcon.of(new FontIcon("fa-book").getIconCode(), 20, Color.valueOf("#fff")));
+            tabReports.setClosable(true);
+            tabReports.setOnClosed(event1 -> {
+
+                tabReports = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabReports);
+
+        }
+        tabPane.getSelectionModel().select(tabReports);
     }
 
     @FXML
