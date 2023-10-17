@@ -14,114 +14,97 @@
    <top>
         <MenuBar fx:id="menuBar" prefHeight="48.0" prefWidth="612.0" stylesheets="@../styles/DashBoardDesign.css" BorderPane.alignment="CENTER">
             <menus>
-                <Menu fx:id="menuArchivo" mnemonicParsing="false" text="Libro">
+                <Menu fx:id="menuRegistro" mnemonicParsing="false" text="Registro">
                     <items>
-                        <MenuItem fx:id="menuConf" mnemonicParsing="false" onAction="#abrirConfiguracion" text="Configuracion">
+                        <MenuItem fx:id="menuRegistroLibro" mnemonicParsing="false" onAction="#abrirLibros" text="Registrar Libro">
                             <graphic>
-                                <FontIcon iconColor="#008a9b" iconLiteral="fa-cog" iconSize="20" />
+                                <FontIcon iconColor="#008a9b" iconLiteral="fa-pencil-square-o" iconSize="20" />
                             </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
                         </MenuItem>
-                        <MenuItem fx:id="menuOrden" mnemonicParsing="false" onAction="#verOrdenPrincipal" text="Orden">
-                            <graphic>
-                                <FontIcon iconColor="#12b386" iconLiteral="fa-book" iconSize="20" />
-                            </graphic>
-                        </MenuItem>
-                  <MenuItem fx:id="menuSalir" mnemonicParsing="false" onAction="#salir" text="Cerrar Sesión">
+                  <MenuItem fx:id="menuRegistroEquipo" mnemonicParsing="false" onAction="#abrirEquipos" text="Registrar Equipo">
                      <graphic>
-                        <FontIcon iconColor="#e10f47" iconLiteral="fa-sign-out" iconSize="20" />
-                     </graphic>
-                  </MenuItem>
-                    </items>
-                    <graphic>
-                        <FontIcon fill="WHITE" iconLiteral="fa-pencil-square-o" iconSize="20" />
-                    </graphic>
-            </Menu>
-                <Menu fx:id="menuInventario" mnemonicParsing="false" text="Inventario">
-                    <items>
-                        <MenuItem fx:id="menuVerMaterial" mnemonicParsing="false" onAction="#tablaMateriales" text="Ver materiales">
-                            <graphic>
-                                <FontIcon iconColor="#2196f3" iconLiteral="fa-search" iconSize="20" />
-                            </graphic>
-                        </MenuItem>
-                  <MenuItem fx:id="menuVerMantenimiento" mnemonicParsing="false" onAction="#mostrarMantenimiento" text="Mantenimiento">
-                     <graphic>
-                        <FontIcon iconColor="#2196f3" iconLiteral="fa-pencil-square-o" iconSize="20" />
-                     </graphic>
-                  </MenuItem>
-                    </items>
-                    <graphic>
-                        <FontIcon fill="WHITE" iconLiteral="fa-truck" iconSize="20" />
-                    </graphic>
-            </Menu>
-                <Menu fx:id="menuOrdenes" mnemonicParsing="false" text="Ordenes">
-                    <items>
-                        <MenuItem fx:id="menuBorrador" mnemonicParsing="false" onAction="#verBorrador" text="Borrador">
-                            <graphic>
-                                <FontIcon iconLiteral="fa-sticky-note-o" iconSize="20" />
-                            </graphic>
-                            <accelerator>
-                                <KeyCodeCombination alt="ANY" code="F1" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator>
-                        </MenuItem>
-                  <MenuItem fx:id="menuPresentada" mnemonicParsing="false" onAction="#verPresentada" text="Presentada">
-                     <graphic>
-                        <FontIcon iconColor="#475f94" iconLiteral="fa-pencil" iconSize="20" />
+                        <FontIcon iconColor="#475f94" iconLiteral="fa-id-card-o" iconSize="20" />
                      </graphic>
                      <accelerator>
                         <KeyCodeCombination alt="ANY" code="F2" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem fx:id="menuAceptada" mnemonicParsing="false" onAction="#verAceptada" text="Aceptada">
-                     <graphic>
-                        <FontIcon iconColor="#12b386" iconLiteral="fa-check-square-o" iconSize="20" />
-                     </graphic>
+                    </items>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fa-home" iconSize="20" />
+                    </graphic>
+            </Menu>
+                <Menu fx:id="menuPrestamos" mnemonicParsing="false" text="Préstamos">
+                    <items>
+                        <MenuItem fx:id="menuPrestamosLibros" mnemonicParsing="false" onAction="#abrirPrestamosLibros" text="Libros">
+                            <graphic>
+                                <FontIcon iconColor="#2196f3" iconLiteral="fa-book" iconSize="20" />
+                            </graphic>
                      <accelerator>
                         <KeyCodeCombination alt="ANY" code="F3" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
-                  </MenuItem>
-                  <MenuItem fx:id="menuProceso" mnemonicParsing="false" onAction="#verProceso" text="Proceso">
+                        </MenuItem>
+                  <MenuItem fx:id="menuPrestamosEquipos" mnemonicParsing="false" onAction="#abrirPrestamosEquipos" text="Equipos">
                      <graphic>
-                        <FontIcon iconColor="#475f94" iconLiteral="fa-hourglass-2" iconSize="20" />
+                        <FontIcon iconColor="#2196f3" iconLiteral="fa-desktop" iconSize="20" />
                      </graphic>
                      <accelerator>
                         <KeyCodeCombination alt="ANY" code="F4" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
                   </MenuItem>
-                  <MenuItem fx:id="menuFinalizada" mnemonicParsing="false" onAction="#verFinalizada" text="Finalizada">
+                    </items>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fa-exchange" iconSize="20" />
+                    </graphic>
+            </Menu>
+                <Menu fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios">
+                    <items>
+                        <MenuItem fx:id="menuRegistroEst" mnemonicParsing="false" onAction="#abrirUsuarios" text="Registrar Estudiante">
                      <graphic>
-                        <FontIcon iconColor="#069af3" iconLiteral="fa-asl-interpreting" iconSize="20" />
+                        <FontIcon iconColor="#12b386" iconLiteral="fa-id-card-o" iconSize="20" />
                      </graphic>
                      <accelerator>
                         <KeyCodeCombination alt="ANY" code="F5" control="UP" meta="UP" shift="UP" shortcut="UP" />
                      </accelerator>
-                  </MenuItem>
-                    </items>
-                    <graphic>
-                        <FontIcon fill="WHITE" iconLiteral="fa-book" iconSize="20" />
-                    </graphic>
-                </Menu>
-                <Menu fx:id="menuUsuarios" mnemonicParsing="false" text="Usuarios">
-                    <items>
-                  <MenuItem fx:id="verUsuarios" mnemonicParsing="false" onAction="#mostrarTablaUsuarios" text="Ver usuarios">
+                        </MenuItem>
+                  <MenuItem fx:id="menuRegistroProf" mnemonicParsing="false" onAction="#abrirProfesores" text="Registrar Profesor">
                      <graphic>
-                        <FontIcon iconColor="#47c072" iconLiteral="fa-users" iconSize="20" />
+                        <FontIcon iconColor="#475f94" iconLiteral="fa-id-card-o" iconSize="20" />
                      </graphic>
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="F6" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
                   </MenuItem>
                     </items>
                     <graphic>
                         <FontIcon fill="WHITE" iconLiteral="fa-user-secret" iconSize="20" />
                     </graphic>
                 </Menu>
-            <Menu fx:id="menuClientes" mnemonicParsing="false" text="Clientes">
-               <items>
-                  <MenuItem fx:id="verClientes" mnemonicParsing="false" onAction="#mostrarClientes" text="Ver clientes">
+                <Menu fx:id="menuTickets" mnemonicParsing="false" text="Tickets">
+                    <items>
+                  <MenuItem fx:id="menuVerTickets" mnemonicParsing="false" onAction="#mostrarTablasTickets" text="Ver tickets">
                      <graphic>
-                        <FontIcon iconColor="#47c072" iconLiteral="fa-users" iconSize="20" />
+                        <FontIcon iconColor="#47c072" iconLiteral="fa-calendar" iconSize="20" />
+                     </graphic>
+                  </MenuItem>
+                    </items>
+                    <graphic>
+                        <FontIcon fill="WHITE" iconLiteral="fa-ticket" iconSize="20" />
+                    </graphic>
+                </Menu>
+            <Menu fx:id="menuReportes" mnemonicParsing="false" text="Reportes">
+               <items>
+                  <MenuItem fx:id="menuVerReportes" mnemonicParsing="false" onAction="#mostrarReportes" text="Nuevo reporte">
+                     <graphic>
+                        <FontIcon iconColor="#47c072" iconLiteral="fa-files-o" iconSize="20" />
                      </graphic>
                   </MenuItem>
                </items>
                <graphic>
-                  <FontIcon fill="WHITE" iconLiteral="fa-user-circle" iconSize="20" />
+                  <FontIcon fill="WHITE" iconLiteral="fa-file-text" iconSize="20" />
                </graphic>
             </Menu>
             </menus>

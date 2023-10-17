@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterBookController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterBookController">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="-8.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: #004e92;" width="887.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="-8.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: #004e92;" width="620.0">
         </Rectangle>
         <FontIcon fill="WHITE" iconLiteral="fa-book" iconSize="30" layoutX="14.0" layoutY="60.0" />
         <Text fill="WHITE" layoutX="55.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Libros">
@@ -58,7 +58,7 @@
                         <Font name="Tahoma" size="16.0" />
                     </font>
                 </Label>
-                <JFXComboBox fx:id="comboBox" prefHeight="25.0" prefWidth="305.0" promptText="Seleccionar Categoria" style="-fx-font-family: Tahoma; -fx-font-size: 14;" GridPane.rowIndex="9" />
+                <JFXComboBox fx:id="comboBoxCategoria" prefHeight="25.0" prefWidth="305.0" promptText="Seleccionar Categoria" style="-fx-font-family: Tahoma; -fx-font-size: 14;" GridPane.rowIndex="9" />
                 <Label text="Fecha Publicación:" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                     <font>
                         <Font name="Tahoma" size="16.0" />
@@ -93,19 +93,17 @@
                     </font>
                 </JFXTextField>
                 <JFXDatePicker fx:id="fechaPicker" GridPane.rowIndex="5" />
-                <JFXButton fx:id="btnBack" alignment="CENTER" onAction="#Back" style="-fx-background-color: #004e92;" text="Regresar" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="15">
-                    <graphic>
-                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-arrow-circle-o-left" iconSize="25" />
-                    </graphic>
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </JFXButton>
                 <JFXTextField fx:id="textAutor" focusColor="#004e92" prefHeight="31.0" prefWidth="298.0" GridPane.rowIndex="1">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </JFXTextField>
+            <Label text="Tipo de libro:" GridPane.rowIndex="11">
+               <font>
+                  <Font name="Tahoma" size="16.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="comboBoxTipoLibro" prefHeight="25.0" prefWidth="305.0" promptText="Seleccionar" style="-fx-font-family: Tahoma; -fx-font-size: 14;" GridPane.rowIndex="12" />
             </children>
         </GridPane>
     </children>

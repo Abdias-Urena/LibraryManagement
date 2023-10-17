@@ -25,38 +25,36 @@ public class RegisterBookController implements Initializable {
 
     @FXML
     private AnchorPane root;
+
     @FXML
-    private JFXTextField textAutor;
-    @FXML
-    private JFXComboBox<?> comboBox;
+    private JFXComboBox<?> comboBoxCategoria;
+
     @FXML
     private JFXTextField textReproduccion;
+
     @FXML
     private JFXButton btnGuardar;
+
     @FXML
     private JFXTextField textTitulo;
+
     @FXML
     private JFXDatePicker fechaPicker;
-    
-    @FXML
-    private JFXButton btnBack;
 
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private JFXTextField textAutor;
+
+    @FXML
+    private JFXComboBox<?> comboBoxTipoLibro;
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
-    private void guardar(ActionEvent event) {
+    void guardar(ActionEvent event) {
+
     }
-    
-    @FXML
-    private void Back(ActionEvent event) {
-        Stage stage = (Stage) btnBack.getScene().getWindow();
-        stage.close();
-    }
-    
 }
