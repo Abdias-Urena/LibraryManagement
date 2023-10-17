@@ -43,8 +43,7 @@ public class MainApp extends Application {
 
         root.setOnMouseReleased((MouseEvent event) -> stage.setOpacity(1));
 
-        //stage.initStyle(StageStyle.TRANSPARENT);
-        //scene.setFill(Color.TRANSPARENT);
+        stage.setFullScreen(true);
         stage.setScene(scene);
         stage.show();
     }

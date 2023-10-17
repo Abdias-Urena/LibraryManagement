@@ -1,15 +1,22 @@
 package Controller;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.fxml.FXML;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import org.kordamp.ikonli.javafx.FontIcon;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable {
@@ -21,120 +28,106 @@ public class DashboardController implements Initializable {
     private MenuBar menuBar;
 
     @FXML
-    private Menu menuArchivo;
+    private Menu menuRegistro;
 
     @FXML
-    private MenuItem menuConf;
+    private MenuItem menuRegistroLibro;
 
     @FXML
-    private MenuItem menuOrden;
+    private MenuItem menuRegistroEquipo;
 
     @FXML
-    private MenuItem menuSalir;
+    private Menu menuPrestamos;
 
     @FXML
-    private Menu menuInventario;
+    private MenuItem menuPrestamosLibros;
 
     @FXML
-    private MenuItem menuVerMaterial;
-
-    @FXML
-    private MenuItem menuVerMantenimiento;
-
-    @FXML
-    private Menu menuOrdenes;
-
-    @FXML
-    private MenuItem menuBorrador;
-
-    @FXML
-    private MenuItem menuPresentada;
-
-    @FXML
-    private MenuItem menuAceptada;
-
-    @FXML
-    private MenuItem menuProceso;
-
-    @FXML
-    private MenuItem menuFinalizada;
+    private MenuItem menuPrestamosEquipos;
 
     @FXML
     private Menu menuUsuarios;
 
     @FXML
-    private MenuItem verUsuarios;
+    private MenuItem menuRegistroEst;
 
     @FXML
-    private Menu menuClientes;
+    private MenuItem menuRegistroProf;
 
     @FXML
-    private MenuItem verClientes;
+    private Menu menuTickets;
+
+    @FXML
+    private MenuItem menuVerTickets;
+
+    @FXML
+    private Menu menuReportes;
+
+    @FXML
+    private MenuItem menuVerReportes;
 
     @FXML
     private JFXTabPane tabPane;
 
-    @FXML
-    void abrirConfiguracion(ActionEvent event) {
+    private Tab tabLibros;
 
-    }
-
-    @FXML
-    void mostrarClientes(ActionEvent event) {
-
-    }
-
-    @FXML
-    void mostrarMantenimiento(ActionEvent event) {
-
-    }
-
-    @FXML
-    void mostrarTablaUsuarios(ActionEvent event) {
-
-    }
-
-    @FXML
-    void salir(ActionEvent event) {
-
-    }
-
-    @FXML
-    void tablaMateriales(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verAceptada(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verBorrador(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verFinalizada(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verOrdenPrincipal(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verPresentada(ActionEvent event) {
-
-    }
-
-    @FXML
-    void verProceso(ActionEvent event) {
-
-    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    @FXML
+    void abrirLibros(ActionEvent event) throws IOException {
+        if (tabLibros == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Books.fxml")));
+            tabLibros = new Tab("LIBROS FISICOS", ap);
+
+            tabLibros.setGraphic(FontIcon.of(new FontIcon("fa-book").getIconCode(), 20, Color.valueOf("#fff")));
+            tabLibros.setClosable(true);
+            tabLibros.setOnClosed(event1 -> {
+
+                tabLibros = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabLibros);
+
+        }
+        tabPane.getSelectionModel().select(tabLibros);
+    }
+
+    @FXML
+    void abrirEquipos(ActionEvent event) throws IOException {
+
+    }
+
+    @FXML
+    void abrirPrestamosEquipos(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirPrestamosLibros(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirProfesores(ActionEvent event) {
+
+    }
+
+    @FXML
+    void abrirUsuarios(ActionEvent event) {
+
+    }
+
+    @FXML
+    void mostrarReportes(ActionEvent event) {
+
+    }
+
+    @FXML
+    void mostrarTablasTickets(ActionEvent event) {
+
+    }
+
 }
