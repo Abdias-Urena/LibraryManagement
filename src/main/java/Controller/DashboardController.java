@@ -69,7 +69,7 @@ public class DashboardController implements Initializable {
     @FXML
     private JFXTabPane tabPane;
 
-    private Tab tabLibros, tabEquipos, tabLoanLibros, tabReports, tabLoanDevices;
+    private Tab tabLibros, tabEquipos, tabLoanLibros, tabReports, tabLoanDevices, tabUsers,tabTeachers ,tabTickets;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -153,13 +153,41 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    void abrirProfesores(ActionEvent event) {
+    void abrirProfesores(ActionEvent event) throws IOException {
+        if (tabTeachers == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/TeacherTable.fxml")));
+            tabTeachers = new Tab("Profesores", ap);
 
+            tabTeachers.setGraphic(FontIcon.of(new FontIcon("fa-address-card-o").getIconCode(), 20, Color.valueOf("#fff")));
+            tabTeachers.setClosable(true);
+            tabTeachers.setOnClosed(event1 -> {
+
+                tabTeachers = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabTeachers);
+
+        }
+        tabPane.getSelectionModel().select(tabTeachers);
     }
 
     @FXML
-    void abrirUsuarios(ActionEvent event) {
+    void abrirUsuarios(ActionEvent event) throws IOException {
+        if (tabUsers == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/StudentTable.fxml")));
+            tabUsers = new Tab("Estudiantes", ap);
 
+            tabUsers.setGraphic(FontIcon.of(new FontIcon("fa-address-card-o").getIconCode(), 20, Color.valueOf("#fff")));
+            tabUsers.setClosable(true);
+            tabUsers.setOnClosed(event1 -> {
+
+                tabUsers = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabUsers);
+
+        }
+        tabPane.getSelectionModel().select(tabUsers);
     }
 
     @FXML
@@ -182,8 +210,22 @@ public class DashboardController implements Initializable {
     }
 
     @FXML
-    void mostrarTablasTickets(ActionEvent event) {
+    void mostrarTablasTickets(ActionEvent event) throws IOException {
+        if (tabTickets == null) {
+            AnchorPane ap = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/TicketsTable.fxml")));
+            tabTickets = new Tab("Multas", ap);
 
+            tabTickets.setGraphic(FontIcon.of(new FontIcon("fa-laptop").getIconCode(), 20, Color.valueOf("#fff")));
+            tabTickets.setClosable(true);
+            tabTickets.setOnClosed(event1 -> {
+
+                tabTickets = null;
+            });
+            //tabPane.setStyle("-fx-background-color:red");
+            tabPane.getTabs().add(tabTickets);
+
+        }
+        tabPane.getSelectionModel().select(tabTickets);
     }
 
 }

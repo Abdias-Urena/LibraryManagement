@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TicketsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" stroke="WHITE" strokeType="INSIDE" width="887.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#004e92" />
+                  <Stop color="#0079b4" offset="0.9961685823754789" />
+                  <Stop color="#004e92" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <FontIcon fill="WHITE" iconLiteral="fa-calendar-times-o" iconSize="30" layoutX="361.0" layoutY="60.0" />
+      <Text fill="WHITE" layoutX="404.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Multas">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Text>
+      <Label layoutX="391.0" layoutY="135.0" text="Usuario:">
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+      </Label>
+      <JFXComboBox fx:id="cmbTicket" focusColor="#835151" layoutX="394.0" layoutY="175.0" promptText="Seleccionar Usuario" styleClass="combo-box" unFocusColor="BLACK" />
+      <Label layoutX="392.0" layoutY="245.0" text="Descripción:">
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="textAreaDesc" layoutX="394.0" layoutY="284.0" prefHeight="77.0" prefWidth="216.0" />
+      <JFXTextField fx:id="textMulta" layoutX="394.0" layoutY="414.0" />
+      <Label layoutX="394.0" layoutY="394.0" text="Precio multa:">
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="textTipoMulta" layoutX="394.0" layoutY="478.0" />
+      <Label layoutX="394.0" layoutY="458.0" text="Tipo multa:">
+         <font>
+            <Font name="Tahoma" size="16.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="btnGuardar" layoutX="403.0" layoutY="542.0" onAction="#guardarTicket" style="-fx-background-color: #004e92;" text="Guardar" textFill="WHITE">
+         <graphic>
+            <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-save" iconSize="25" />
+         </graphic>
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
