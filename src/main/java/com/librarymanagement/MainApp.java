@@ -1,4 +1,5 @@
 package com.librarymanagement;
+
 import com.sun.javafx.application.LauncherImpl;
 import com.sun.swing.internal.plaf.synth.resources.synth_sv;
 import javafx.application.Application;
@@ -22,7 +23,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/hello.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/Dashboard.fxml")));
         Scene scene = new Scene(root);
 
         root.setOnMousePressed((MouseEvent event) -> {
