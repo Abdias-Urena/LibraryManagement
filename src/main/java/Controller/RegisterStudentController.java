@@ -1,10 +1,8 @@
 package Controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
@@ -12,33 +10,34 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoanDevicesController implements Initializable {
+public class RegisterStudentController implements Initializable {
 
     @FXML
     private AnchorPane root;
 
     @FXML
-    private JFXComboBox<?> cmbTipoDis;
+    private JFXTextField JTextName;
 
     @FXML
-    private JFXTextField textNombre;
+    private JFXTextField JTextSurname;
 
     @FXML
-    private JFXDatePicker datePickerActual;
+    private JFXTextField JTextAddress;
 
     @FXML
-    private JFXDatePicker datePickerLimite;
+    private JFXTextField JTextEmail;
 
     @FXML
-    private JFXComboBox<?> cmbDispDis;
+    private JFXTextField JTextTelephone;
 
     @FXML
-    private JFXButton btnGuardar;
+    private JFXTextField JTextCareer;
 
     @FXML
-    void guardar(ActionEvent event) {
+    private JFXComboBox<?> JComboBox;
 
-    }
+    @FXML
+    private JFXButton btnSave;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
