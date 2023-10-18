@@ -1,16 +1,13 @@
 package com.librarymanagement;
 
 import com.sun.javafx.application.LauncherImpl;
-import com.sun.swing.internal.plaf.synth.resources.synth_sv;
 import javafx.application.Application;
 import javafx.application.Preloader;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
