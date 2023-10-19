@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RegisterBookController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditBookController">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="-8.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: #004e92;" width="620.0">
         </Rectangle>
