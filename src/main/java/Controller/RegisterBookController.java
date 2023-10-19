@@ -87,10 +87,10 @@ public class RegisterBookController implements Initializable {
     public Book saveDataBook() {
         if (comboBoxTipoLibro.getValue().equals("Digital")) {
             book = new DigitalBook(textURL.getText(), textAutor.getText(), textCategory.getText(), fechaPicker.getValue().toString(),
-                    textReproduccion.getText(), textTitulo.getText(), comboBoxTipoLibro.getValue());
+                    textReproduccion.getText(), textTitulo.getText(), "D");
         } else {
             book = new FisicBook(true, false, textAutor.getText(), textCategory.getText(), fechaPicker.getValue().toString(),
-                    textReproduccion.getText(), textTitulo.getText(), comboBoxTipoLibro.getValue());
+                    textReproduccion.getText(), textTitulo.getText(), "F");
         }
         return book;
     }
@@ -98,15 +98,6 @@ public class RegisterBookController implements Initializable {
     public void QuerySaveData() {
         String tipoLibro = comboBoxTipoLibro.getValue();
         book = saveDataBook();
-
-        if (tipoLibro.equals("Digital")) {
-            book = new DigitalBook(textURL.getText(), textAutor.getText(), textCategory.getText(),
-                    fechaPicker.getValue().toString(), textReproduccion.getText(), textTitulo.getText(), "D");
-        } else {
-            book = new FisicBook(true, false, textAutor.getText(), textCategory.getText(),
-                    fechaPicker.getValue().toString(), textReproduccion.getText(), textTitulo.getText(), "F");
-        }
-
         try {
             String insertQuery = "INSERT INTO book (AUTHOR, CATEGORY, PUBLIC_DATE, " +
                     "REPRODUC, TITLE, TYPE, URL, " +
@@ -120,8 +111,8 @@ public class RegisterBookController implements Initializable {
             preparedStatement.setString(5, book.getTitle());
 
             if (tipoLibro.equals("Digital")) {
-                preparedStatement.setString(6, ((DigitalBook) book).getUrl());
-                preparedStatement.setString(7, book.getType());
+                preparedStatement.setString(6, book.getType());
+                preparedStatement.setString(7, ((DigitalBook) book).getUrl());
                 preparedStatement.setString(8, "Y");
                 preparedStatement.setString(9, "Y");
             } else {
@@ -143,8 +134,18 @@ public class RegisterBookController implements Initializable {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        cleanTextField();
     }
 
+    public void cleanTextField(){
+        textAutor.setText("");
+        textCategory.setText("");
+        textReproduccion.setText("");
+        textTitulo.setText("");
+        textURL.setText("");
+        comboBoxTipoLibro.setValue("");
+        fechaPicker.setValue(null);
+    }
     @FXML
     void chooseBook(ActionEvent event) {
         if (comboBoxTipoLibro.getValue().equals("Digital")) {

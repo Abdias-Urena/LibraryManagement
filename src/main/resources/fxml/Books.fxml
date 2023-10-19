@@ -35,6 +35,11 @@
                               <FontIcon iconColor="#2196f3" iconLiteral="fa-trash-o" iconSize="22" />
                            </graphic>
                         </JFXButton>
+                        <JFXButton fx:id="btnListar" contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#listarEquipos" text="Listar">
+                           <graphic>
+                              <FontIcon iconColor="#2196f3" iconLiteral="fa-refresh" iconSize="22" />
+                           </graphic>
+                        </JFXButton>
                      </items>
                   </ToolBar>
                   <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
@@ -55,6 +60,7 @@
                               <TableColumn fx:id="colReproduccion" prefWidth="220.0" text="REPRODUCCION" />
                               <TableColumn fx:id="colTitle" prefWidth="220.0" text="TITLE" />
                               <TableColumn fx:id="colTipo" prefWidth="220.0" text="TIPO LIBRO" />
+                              <TableColumn fx:id="colURL" prefWidth="220.0" text="URL" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
