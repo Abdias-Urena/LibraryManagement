@@ -16,6 +16,8 @@ public class Book {
 
     private String title;
 
+    private String type;
+
     /**
      * Constructor por defecto de la clase `Book`.
      */
@@ -32,12 +34,13 @@ public class Book {
      * @param reproduction La información sobre la reproducción del libro.
      * @param title El título del libro.
      */
-    public Book(String author, String category, String publicationDate, String reproduction, String title) {
+    public Book(String author, String category, String publicationDate, String reproduction, String title, String type) {
         this.author = author;
         this.category = category;
         this.publicationDate = publicationDate;
         this.reproduction = reproduction;
         this.title = title;
+        this.type = type;
     }
 
     /**
@@ -117,17 +120,30 @@ public class Book {
      *
      * @return El título del libro.
      */
-    public String getTiltle() {
+    public String getTitle() {
         return title;
     }
 
     /**
      * Establece el título del libro.
      *
-     * @param tiltle El nuevo título del libro.
+     * @param title El nuevo título del libro.
      */
-    public void setTiltle(String tiltle) {
-        this.title = tiltle;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * Establece el tipo del libro.
+     *
+     * @param  'rtto ' El nuevo tipoo del libro.
+     */
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**

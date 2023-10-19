@@ -29,8 +29,8 @@ public class DigitalBook extends Book {
      * digital.
      * @param title El título del libro digital.
      */
-    public DigitalBook(String url, String author, String category, String publicationDate, String reproduction, String title) {
-        super(author, category, publicationDate, reproduction, title);
+    public DigitalBook(String url, String author, String category, String publicationDate, String reproduction, String title, String type) {
+        super(author, category, publicationDate, reproduction, title, type);
         this.url = url;
     }
 

@@ -20,11 +20,6 @@
                <children>
                   <ToolBar orientation="VERTICAL" prefHeight="40.0" style="-fx-background-color: white;">
                      <items>
-                        <JFXButton fx:id="btnListar" contentDisplay="TOP" maxWidth="1.7976931348623157E308" onAction="#listarLibros" text="Listar">
-                           <graphic>
-                              <FontIcon iconColor="#2196f3" iconLiteral="fa-refresh" iconSize="22" />
-                           </graphic>
-                        </JFXButton>
                         <JFXButton fx:id="btnNuevo" contentDisplay="TOP" layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" onAction="#nuevoLibro" text="Nuevo">
                            <graphic>
                               <FontIcon iconColor="#2196f3" iconLiteral="fa-tag" iconSize="22" />
@@ -58,7 +53,7 @@
                               <TableColumn fx:id="colCategoria" prefWidth="220.0" text="CATEGORIA" />
                               <TableColumn fx:id="colPublicacion" prefWidth="220.0" text="PUBLICACION" />
                               <TableColumn fx:id="colReproduccion" prefWidth="220.0" text="REPRODUCCION" />
-                              <TableColumn fx:id="colTitulo" prefWidth="220.0" text="TITULO" />
+                              <TableColumn fx:id="colTitle" prefWidth="220.0" text="TITLE" />
                               <TableColumn fx:id="colTipo" prefWidth="220.0" text="TIPO LIBRO" />
                            </columns>
                            <columnResizePolicy>

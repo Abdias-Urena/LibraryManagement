@@ -39,8 +39,8 @@ public class FisicBook extends Book {
      * físico.
      * @param title El título del libro físico.
      */
-    public FisicBook(boolean isAvailable, boolean isUsable, String author, String category, String publicationDate, String reproduction, String title) {
-        super(author, category, publicationDate, reproduction, title);
+    public FisicBook(boolean isAvailable, boolean isUsable, String author, String category, String publicationDate, String reproduction, String title, String type) {
+        super(author, category, publicationDate, reproduction, title, type);
         this.isAvailable = isAvailable;
         this.isUsable = isUsable;
     }

@@ -19,7 +19,7 @@
         <Rectangle arcHeight="5.0" arcWidth="5.0" height="100.0" layoutX="-8.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" style="-fx-fill: #004e92;" width="620.0">
         </Rectangle>
         <FontIcon fill="WHITE" iconLiteral="fa-book" iconSize="30" layoutX="14.0" layoutY="60.0" />
-        <Text fill="WHITE" layoutX="55.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrar Libros">
+        <Text fill="WHITE" layoutX="62.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Libro">
             <font>
                 <Font name="System Bold" size="36.0" />
             </font>
@@ -78,9 +78,9 @@
                         <Font name="Tahoma" size="16.0" />
                     </font>
                 </Label>
-                <JFXButton fx:id="btnGuardar" onAction="#guardar" style="-fx-background-color: #004e92;" text="Guardar" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="15">
+                <JFXButton fx:id="btnEdit" onAction="#editarBook" style="-fx-background-color: #004e92;" text="Editar" textFill="WHITE" GridPane.halignment="LEFT" GridPane.rowIndex="15">
                     <graphic>
-                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-save" iconSize="25" />
+                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-edit" iconSize="25" />
                     </graphic>
                     <font>
                         <Font name="System Bold" size="18.0" />
