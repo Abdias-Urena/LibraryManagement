@@ -128,6 +128,22 @@ public class StudentTableController implements Initializable {
         students = getStudentList();
         tablaEstudiantes.setItems(students);
     }
+    public void UpdateTable(String id){
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        colDireccion.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colTelefono.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        colCarrera.setCellValueFactory(new PropertyValueFactory<>("career"));
+        colbeca.setCellValueFactory(new PropertyValueFactory<>("grant"));
+
+        ObservableList<Student> filteredStudents = students.filtered(student ->
+                student.getId().toLowerCase().contains(id.toLowerCase()) ||
+                        student.getLastname().toLowerCase().contains(id.toLowerCase()) ||
+                                student.getName().toLowerCase().contains(id.toLowerCase())
+        );
+        tablaEstudiantes.setItems(filteredStudents);
+    }
 
     @FXML
     void borrarEstudiante(ActionEvent event) {
@@ -136,7 +152,8 @@ public class StudentTableController implements Initializable {
 
     @FXML
     void buscarEstudiante(KeyEvent event) {
-
+        String id = textBuscar.getText();
+        UpdateTable(id);
     }
 
     @FXML

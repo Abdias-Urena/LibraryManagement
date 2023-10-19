@@ -109,6 +109,6 @@ public class User extends Person {
      */
     @Override
     public String toString() {
-        return "User{" + "address=" + address + ", email=" + email + ", phoneNumber=" + phoneNumber + '}';
+        return getName()+" "+getLastname();
     }
 }

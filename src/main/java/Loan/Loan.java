@@ -9,11 +9,17 @@ package Loan;
  * para administrar los préstamos de libros y dispositivos.
  */
 import Book.Book;
+import Connection.DatabaseConnection;
 import Device.Device;
 import Interface.LoanBook;
 import Interface.LoanDevice;
 import Person.User;
-import java.util.List;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Loan implements LoanBook, LoanDevice {
 
@@ -112,7 +118,38 @@ public class Loan implements LoanBook, LoanDevice {
      */
     @Override
     public Book addBook(Book book) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        try {
+            DatabaseConnection connection = DatabaseConnection.getInstance();
+            PreparedStatement preparedStatement = connection.getConnection().prepareStatement("SELECT NUMBER_BOOK FROM BOOK WHERE TITLE =?");
+            preparedStatement.setString(1, book.getTitle());
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                String number_book = rs.getString("NUMBER_BOOK");
+                System.out.println(number_book);
+                preparedStatement= connection.getConnection().prepareStatement("INSERT INTO LOAN (EXPIRATION_DATE, LOAN_DATE, ID, NUMBER_BOOK) VALUES (?,?,?,?)");
+                preparedStatement.setDate(1, java.sql.Date.valueOf(LocalDate.parse(expirationDate)));
+                preparedStatement.setDate(2, java.sql.Date.valueOf(LocalDate.parse(loanDate)));
+                preparedStatement.setString(3, user.getId());
+                preparedStatement.setString(4, number_book);
+
+                int row = preparedStatement.executeUpdate();
+                System.out.println("Rows affected: "+row);
+                if(row == 1){
+                    System.out.println("Datos insertados");
+                    preparedStatement= connection.getConnection().prepareStatement("UPDATE BOOK SET IS_AVAILABLE=? WHERE NUMBER_BOOK=?");
+                    preparedStatement.setString(1,"N");
+                    preparedStatement.setString(2,number_book);
+                    row = preparedStatement.executeUpdate();
+                    if (row == 1){
+                        System.out.println("Datos actulizados"+row);
+                    }
+                }
+            }
+
+        }catch (SQLException s){
+            System.out.println(s.getErrorCode());
+        }
+        return book;
     }
     /**
      * {@inheritDoc}

@@ -104,6 +104,7 @@ public class RegisterStudentController implements Initializable {
                 int row = preparedStatement.executeUpdate();
                 System.out.println(row);
                 if(row > 0){
+                    preparedStatement.close();
                     return true;
                 }
             }

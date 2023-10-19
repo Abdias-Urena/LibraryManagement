@@ -81,9 +81,9 @@ public class RegisterTeachersController implements Initializable {
             preparedStatement.setString(7, "T");
             preparedStatement.setString(8, user.getDepartament());
             int row = preparedStatement.executeUpdate();
-            connection.getConnection().close();
             System.out.println(row);
             if(row > 0){
+                preparedStatement.close();
                 return true;
             }
         }catch (SQLException e){

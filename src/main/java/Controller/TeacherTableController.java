@@ -120,6 +120,22 @@ public class TeacherTableController implements Initializable {
         teachers = getTeachersList();
         tablaProfesor.setItems(teachers);
     }
+
+    public void UpdateTable(String search) {
+        colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
+        colDireccion.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colTelefono.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        colDepartamento.setCellValueFactory(new PropertyValueFactory<>("departament"));
+
+        ObservableList<Teacher> filteredTeachers = teachers.filtered(teacher ->
+                teacher.getId().toLowerCase().contains(search.toLowerCase()) ||
+                        teacher.getLastname().toLowerCase().contains(search.toLowerCase()) ||
+                        teacher.getName().toLowerCase().contains(search.toLowerCase())
+        );
+        tablaProfesor.setItems(filteredTeachers);
+    }
     @FXML
     void borrarProfesor(ActionEvent event) {
 
@@ -127,7 +143,8 @@ public class TeacherTableController implements Initializable {
 
     @FXML
     void buscarProfesor(KeyEvent event) {
-
+        String search = textBuscar.getText();
+        UpdateTable(search);
     }
 
     @FXML
