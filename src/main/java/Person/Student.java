@@ -28,6 +28,18 @@ public class Student extends User {
         this.grant = grant;
     }
 
+    public Student(String address, String email, String phoneNumber, String id, String lastname, String name, String career, boolean grant) {
+        super(address, email, phoneNumber, id, lastname, name);
+        this.career = career;
+        this.grant = grant;
+        /**
+         * Constructor parametrizado para la clase `Student`.
+         * @param super contiene los atributos de la clase padre.
+         * @param career La carrera que sigue el estudiante.
+         * @param grant Indica si el estudiante tiene una beca.
+         */
+    }
+
     /**
      * Obtiene la carrera que sigue el estudiante.
      *
