@@ -14,6 +14,8 @@ public class Device {
 
     private boolean isUsable;
 
+    private boolean isAvailable;
+
     private String type;
 
     /**
@@ -32,12 +34,21 @@ public class Device {
      * @param isUsable Indica si el dispositivo es utilizable.
      * @param type El tipo de dispositivo.
      */
-    public Device(String brand, boolean haveCharger, String id, boolean isUsable, String type) {
+    public Device(String brand, boolean haveCharger, String id, boolean isUsable, boolean isAvailable, String type) {
         this.brand = brand;
         this.haveCharger = haveCharger;
         this.id = id;
         this.isUsable = isUsable;
+        this.isAvailable = isAvailable;
         this.type = type;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
     }
 
     /**
@@ -102,7 +113,7 @@ public class Device {
      * @return `true` si el dispositivo es utilizable, `false` en caso
      * contrario.
      */
-    public boolean isIsUsable() {
+    public boolean isUsable() {
         return isUsable;
     }
 
@@ -141,6 +152,6 @@ public class Device {
      */
     @Override
     public String toString() {
-        return "Device{" + "brand=" + brand + ", haveCharger=" + haveCharger + ", id=" + id + ", isUsable=" + isUsable + ", type=" + type + '}';
+        return brand +" "+id;
     }
 }

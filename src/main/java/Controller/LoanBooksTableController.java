@@ -85,6 +85,17 @@ public class LoanBooksTableController implements Initializable {
         loans = getLoanList();
         tablaPrestamoLibro.setItems(loans);
     }
+    public void UpdateTable(String id){
+        colLibroPrestamo.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colFechaPrestamo.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
+        colFechaLimite.setCellValueFactory(new PropertyValueFactory<>("expirationDate"));
+        collPersona.setCellValueFactory(new PropertyValueFactory<>("user"));
+
+        ObservableList<Loan> filteredStudents = loans.filtered(student ->
+                student.getId().toLowerCase().contains(id.toLowerCase())
+        );
+        tablaPrestamoLibro.setItems(filteredStudents);
+    }
     public ObservableList<Loan> getLoanList() {
         ObservableList<Loan> list_loan = FXCollections.observableArrayList();
         try {
@@ -120,7 +131,8 @@ public class LoanBooksTableController implements Initializable {
 
     @FXML
     void buscarPrestamoLibros(KeyEvent event) {
-
+        String searchBook = textBuscar.getText();
+        UpdateTable(searchBook);
     }
 
     @FXML
@@ -130,7 +142,7 @@ public class LoanBooksTableController implements Initializable {
 
     @FXML
     void listarPrestamoLibro(ActionEvent event) {
-
+        UpdateTable();
     }
 
     @FXML
