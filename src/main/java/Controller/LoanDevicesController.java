@@ -162,7 +162,7 @@ public class LoanDevicesController implements Initializable {
     public ObservableList<Device> getDeviceList() {
         ObservableList<Device> list_students = FXCollections.observableArrayList();
         try {
-            PreparedStatement pst = connection.getConnection().prepareStatement("SELECT ID, TYPE, BRAND from DEVICE WHERE IS_AVAILABLE= 'Y' AND IS_USABLE='N'");
+            PreparedStatement pst = connection.getConnection().prepareStatement("SELECT ID, TYPE, BRAND from DEVICE WHERE IS_AVAILABLE= 'Y' AND IS_USABLE='Y'");
             ResultSet rs = pst.executeQuery();
             returnDevices(list_students, rs);
         } catch (Exception e) {

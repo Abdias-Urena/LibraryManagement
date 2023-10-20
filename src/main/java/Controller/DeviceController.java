@@ -1,8 +1,11 @@
 package Controller;
 
+
+import Book.Book;
 import Connection.DatabaseConnection;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,6 +33,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -71,16 +77,13 @@ public class DeviceController implements Initializable {
 
     private Stage stageEquipos;
 
+
     private RegisterDeviceController registerDeviceController;
 
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
     Connection connection = databaseConnection.getConnection();
     ObservableList<Device> DeviceList = FXCollections.observableArrayList();
 
-    @FXML
-    void borrarEquipo(ActionEvent event) {
-
-    }
 
     @FXML
     void buscarEquipo(KeyEvent event) {
@@ -89,7 +92,29 @@ public class DeviceController implements Initializable {
 
     @FXML
     void editarEquipo(ActionEvent event) {
+        // Obtener el libro seleccionado de la tabla
+        Device DeviceSelect = tablaEquipos.getSelectionModel().getSelectedItem();
 
+        if (DeviceSelect != null) {
+            try {
+                // Cargar el controlador del nuevo FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/EditDevice.fxml"));
+                AnchorPane ap = loader.load();
+                EditDeviceController editDeviceController = loader.getController();
+
+                editDeviceController.initData(DeviceSelect);
+
+                Scene scene = new Scene(ap);
+                Stage stageEdicion = new Stage();
+                stageEdicion.setScene(scene);
+                stageEdicion.initModality(Modality.WINDOW_MODAL);
+                stageEdicion.initStyle(StageStyle.DECORATED);
+                stageEdicion.setResizable(false);
+                stageEdicion.showAndWait();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -119,13 +144,22 @@ public class DeviceController implements Initializable {
 
     public void UpdateTable() {
         colMarca.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        colDisponibilidad.setCellValueFactory(new PropertyValueFactory<>("available"));
+        colDisponibilidad.setCellValueFactory(celldata -> {
+            if (celldata.getValue().isAvailable()) {
+                return new SimpleStringProperty("Disponible");
+            } else return new SimpleStringProperty("No disponible");
+        });
         collTipo.setCellValueFactory(new PropertyValueFactory<>("type"));
         collID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        collCharge.setCellValueFactory(new PropertyValueFactory<>("haveCharger"));
+        collCharge.setCellValueFactory(celldata -> {
+            if (celldata.getValue().isHaveCharger()) {
+                return new SimpleStringProperty("Disponible");
+            } else return new SimpleStringProperty("No disponible");
+        });
         DeviceList = getDeviceList();
         tablaEquipos.setItems(DeviceList);
     }
+
     @FXML
     void nuevoEquipo(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));
@@ -150,6 +184,46 @@ public class DeviceController implements Initializable {
         });
 
         stageEquipos.showAndWait();
+    }
+
+    @FXML
+    void borrarEquipo(ActionEvent event) {
+        Device DeviceSelect = tablaEquipos.getSelectionModel().getSelectedItem();
+
+        if (DeviceSelect != null) {
+            boolean confirm = showConfirmationDialog("¿Estás seguro de que deseas eliminar este equipo?");
+
+            if (confirm) {
+                boolean exito = deleteBookFromDatabase(DeviceSelect);
+
+                if (exito) {
+                    UpdateTable();
+                } else {
+                    showAlert("Error al eliminar el libro.");
+                }
+            }
+        } else {
+            showAlert("Por favor, selecciona un libro para eliminar.");
+        }
+    }
+    private boolean deleteBookFromDatabase(Device device) {
+        try {
+            PreparedStatement pst = connection.prepareStatement("DELETE FROM device WHERE ID = ?");
+            pst.setString(1, device.getId());
+            int rowsAffected = pst.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    private boolean showConfirmationDialog(String mensaje) {
+        return new Alert(Alert.AlertType.CONFIRMATION, mensaje, ButtonType.OK, ButtonType.CANCEL).showAndWait().filter(response -> response == ButtonType.OK).isPresent();
+    }
+
+    private void showAlert(String mensaje) {
+        new Alert(Alert.AlertType.INFORMATION, mensaje).showAndWait();
     }
 
     @Override
