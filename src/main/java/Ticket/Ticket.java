@@ -5,11 +5,8 @@ package Ticket;
  * Incluye atributos como la devolución asociada, descripción, precio del ticket
  * y número de ticket.
  */
-import Devolution.Devolution;
-
 public class Ticket {
 
-    private Devolution devolution;
 
     private String description;
 
@@ -26,36 +23,15 @@ public class Ticket {
     /**
      * Constructor parametrizado para la clase `Ticket`.
      *
-     * @param devolution La devolución asociada al ticket.
      * @param description La descripción del ticket.
      * @param priceTicket El precio del ticket.
      * @param ticket El número de ticket.
      */
-    public Ticket(Devolution devolution, String description, int priceTicket, String ticket) {
-        this.devolution = devolution;
+    public Ticket(String description, int priceTicket, String ticket) {
         this.description = description;
         this.priceTicket = priceTicket;
         this.ticket = ticket;
     }
-
-    /**
-     * Obtiene la devolución asociada al ticket.
-     *
-     * @return La devolución asociada.
-     */
-    public Devolution getDevolution() {
-        return devolution;
-    }
-
-    /**
-     * Establece la devolución asociada al ticket.
-     *
-     * @param devolution La nueva devolución asociada.
-     */
-    public void setDevolution(Devolution devolution) {
-        this.devolution = devolution;
-    }
-
     /**
      * Obtiene la descripción del ticket.
      *
@@ -115,6 +91,6 @@ public class Ticket {
      */
     @Override
     public String toString() {
-        return "Ticket{" + "devolution=" + devolution + ", description=" + description + ", priceTicket=" + priceTicket + ", ticket=" + ticket + '}';
+        return "Ticket{" + ", description=" + description + ", priceTicket=" + priceTicket + ", ticket=" + ticket + '}';
     }
 }
