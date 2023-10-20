@@ -2,6 +2,7 @@ package Controller;
 
 import Book.*;
 import Connection.DatabaseConnection;
+import Person.Student;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.beans.property.SimpleStringProperty;
@@ -95,7 +96,7 @@ public class BooksController implements Initializable {
 
     @FXML
     void buscarLibro(KeyEvent event) {
-
+        UpdateTable(textBuscar.getText());
     }
 
 
@@ -135,6 +136,36 @@ public class BooksController implements Initializable {
         return bookList;
     }
 
+    public void UpdateTable(String id) {
+        colAutor.setCellValueFactory(new PropertyValueFactory<>("author"));
+        colCategoria.setCellValueFactory(new PropertyValueFactory<>("category"));
+        colPublicacion.setCellValueFactory(new PropertyValueFactory<>("publicationDate"));
+        colReproduccion.setCellValueFactory(new PropertyValueFactory<>("reproduction"));
+        colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+        colTipo.setCellValueFactory(cellData -> {
+            if (cellData.getValue() instanceof DigitalBook) {
+                return new SimpleStringProperty("Digital");
+            } else {
+                return new SimpleStringProperty("Físico");
+            }
+        });
+        colURL.setCellValueFactory(cellData -> {
+            if (cellData.getValue() instanceof DigitalBook) {
+                return new SimpleStringProperty(((DigitalBook) cellData.getValue()).getUrl());
+            } else {
+                return new SimpleStringProperty("No existe");
+            }
+        });
+        ObservableList<Book> filteredBooks = BookList.filtered(book ->
+                book.getAuthor().toLowerCase().contains(id.toLowerCase()) ||
+                        book.getCategory().toLowerCase().contains(id.toLowerCase()) ||
+                        book.getPublicationDate().toLowerCase().contains(id.toLowerCase()) ||
+                        book.getReproduction().toLowerCase().contains(id.toLowerCase()) ||
+                        book.getTitle().toLowerCase().contains(id.toLowerCase()) ||
+                        book.getType().toLowerCase().contains(id.toLowerCase())
+        );
+        tablaLibros.setItems(filteredBooks);
+    }
 
     public void UpdateTable() {
         colAutor.setCellValueFactory(new PropertyValueFactory<>("author"));
@@ -142,12 +173,18 @@ public class BooksController implements Initializable {
         colPublicacion.setCellValueFactory(new PropertyValueFactory<>("publicationDate"));
         colReproduccion.setCellValueFactory(new PropertyValueFactory<>("reproduction"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
-        colTipo.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colTipo.setCellValueFactory(cellData -> {
+            if (cellData.getValue() instanceof DigitalBook) {
+                return new SimpleStringProperty("Digital");
+            } else {
+                return new SimpleStringProperty("Físico");
+            }
+        });
         colURL.setCellValueFactory(cellData -> {
             if (cellData.getValue() instanceof DigitalBook) {
                 return new SimpleStringProperty(((DigitalBook) cellData.getValue()).getUrl());
             } else {
-                return new SimpleStringProperty("");
+                return new SimpleStringProperty("No existe");
             }
         });
         BookList = getBooksList();

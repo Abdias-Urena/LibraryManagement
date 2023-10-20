@@ -30,11 +30,6 @@
                               <FontIcon iconColor="#2196f3" iconLiteral="fa-tag" iconSize="22" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btnEditar" contentDisplay="TOP" layoutX="10.0" layoutY="65.0" maxWidth="1.7976931348623157E308" onAction="#editarMulta" text="Editar">
-                           <graphic>
-                              <FontIcon iconColor="#2196f3" iconLiteral="fa-edit" iconSize="22" />
-                           </graphic>
-                        </JFXButton>
                         <JFXButton fx:id="btnBorrar" contentDisplay="TOP" layoutX="10.0" layoutY="120.0" maxWidth="1.7976931348623157E308" onAction="#borrarMulta" text="Borrar">
                            <graphic>
                               <FontIcon iconColor="#2196f3" iconLiteral="fa-trash-o" iconSize="22" />
@@ -57,7 +52,6 @@
                               <TableColumn fx:id="colUsuario" prefWidth="220.0" text="USUARIO" />
                               <TableColumn fx:id="colDescripcion" prefWidth="220.0" text="DESCRIPCION" />
                               <TableColumn fx:id="colPrecioMulta" prefWidth="220.0" text="PRECIO MULTA" />
-                              <TableColumn fx:id="colTipoMulta" prefWidth="220.0" text="TIPO MULTA" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

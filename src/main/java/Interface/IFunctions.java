@@ -1,5 +1,7 @@
 package Interface;
 
+import Ticket.Ticket;
+
 /**
  * La interfaz `IFunctions` define un conjunto de funciones
  */
@@ -10,5 +12,5 @@ public interface IFunctions {
      *
      * @return La cantidad de días.
      */
-    public int getDays();
+    public Ticket getDays(Ticket ticket);
 }

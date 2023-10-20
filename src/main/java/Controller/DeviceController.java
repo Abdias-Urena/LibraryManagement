@@ -87,7 +87,7 @@ public class DeviceController implements Initializable {
 
     @FXML
     void buscarEquipo(KeyEvent event) {
-
+        UpdateTable(textBuscar.getText());
     }
 
     @FXML
@@ -142,17 +142,46 @@ public class DeviceController implements Initializable {
         return DeviceList;
     }
 
-    public void UpdateTable() {
+    public void UpdateTable(String id) {
         colMarca.setCellValueFactory(new PropertyValueFactory<>("brand"));
-        colDisponibilidad.setCellValueFactory(celldata -> {
-            if (celldata.getValue().isAvailable()) {
+        colDisponibilidad.setCellValueFactory(cellData -> {
+            if (cellData.getValue().isAvailable()) {
                 return new SimpleStringProperty("Disponible");
             } else return new SimpleStringProperty("No disponible");
         });
         collTipo.setCellValueFactory(new PropertyValueFactory<>("type"));
         collID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        collCharge.setCellValueFactory(celldata -> {
-            if (celldata.getValue().isHaveCharger()) {
+        collCharge.setCellValueFactory(cellData -> {
+            if (cellData.getValue().isHaveCharger()) {
+                return new SimpleStringProperty("Disponible");
+            } else return new SimpleStringProperty("No disponible");
+        });
+        ObservableList<Device> filteredDevices = DeviceList.filtered(device ->
+                device.getBrand().contains(id.toLowerCase()) ||
+                        String.valueOf(device.isAvailable()).toLowerCase().contains(id.toLowerCase()) ||
+                        device.getType().toLowerCase().contains(id.toLowerCase()) ||
+                        device.getId().toLowerCase().contains(id.toLowerCase()) ||
+                        String.valueOf(device.isHaveCharger()).toLowerCase().contains(id.toLowerCase())
+        );
+        tablaEquipos.setItems(filteredDevices);
+    }
+
+
+    public void UpdateTable() {
+        colMarca.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        colDisponibilidad.setCellValueFactory(cellData -> {
+            if (cellData.getValue().isAvailable()) {
+                return new SimpleStringProperty("Disponible");
+            } else return new SimpleStringProperty("No disponible");
+        });
+        collTipo.setCellValueFactory(cellData -> {
+            if (cellData.getValue().getType().equals("L")) {
+                return new SimpleStringProperty("Laptop");
+            } else return new SimpleStringProperty("Tablet");
+        });
+        collID.setCellValueFactory(new PropertyValueFactory<>("id"));
+        collCharge.setCellValueFactory(cellData -> {
+            if (cellData.getValue().isHaveCharger()) {
                 return new SimpleStringProperty("Disponible");
             } else return new SimpleStringProperty("No disponible");
         });

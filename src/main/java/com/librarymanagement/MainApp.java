@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class MainApp extends Application {
 
-    private static final int COUNT_LIMIT = 10;
+    private static final int COUNT_LIMIT = 1;
     private double x = 0;
     private double y = 0;
 

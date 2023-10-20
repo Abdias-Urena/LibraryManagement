@@ -1,11 +1,13 @@
 package Ticket;
 
+import Interface.IFunctions;
+
 /**
  * La clase `Ticket` representa un ticket relacionado con una devolución.
  * Incluye atributos como la devolución asociada, descripción, precio del ticket
  * y número de ticket.
  */
-public class Ticket {
+public class Ticket implements IFunctions {
 
 
     private String description;
@@ -31,6 +33,11 @@ public class Ticket {
         this.description = description;
         this.priceTicket = priceTicket;
         this.ticket = ticket;
+    }
+
+    public Ticket(String description, int priceTicket) {
+        this.description = description;
+        this.priceTicket = priceTicket;
     }
     /**
      * Obtiene la descripción del ticket.
@@ -89,6 +96,10 @@ public class Ticket {
     /**
      * {@inheritDoc}
      */
+    @Override
+    public Ticket getDays(Ticket ticket){
+        return  ticket;
+    }
     @Override
     public String toString() {
         return "Ticket{" + ", description=" + description + ", priceTicket=" + priceTicket + ", ticket=" + ticket + '}';
