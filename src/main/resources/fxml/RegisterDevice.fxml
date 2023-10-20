@@ -68,12 +68,17 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Label text="Marca:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                <Label fx:id="labelBrand" text="Marca:" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                     <font>
                         <Font name="Tahoma" size="16.0"/>
                     </font>
                 </Label>
-                <Label text="Cargador:" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="BOTTOM">
+                <Label fx:id="labelID" text="ID:" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                    <font>
+                        <Font name="Tahoma" size="16.0"/>
+                    </font>
+                </Label>
+                <Label text="Cargador:" GridPane.halignment="LEFT" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
                     <font>
                         <Font name="Tahoma" size="16.0"/>
                     </font>
@@ -94,23 +99,19 @@
                         <Font name="System Bold" size="18.0"/>
                     </font>
                 </JFXButton>
-                <CheckComboBox fx:id="checkComboBox" GridPane.rowIndex="7"/>
+                <CheckComboBox fx:id="checkComboBox" GridPane.rowIndex="9"/>
+                <JFXTextField fx:id="textID" focusColor="#004e92" prefHeight="25.0" prefWidth="312.0"
+                              GridPane.rowIndex="4">
+                    <font>
+                        <Font size="15.0"/>
+                    </font>
+                </JFXTextField>
                 <JFXTextField fx:id="textMarca" focusColor="#004e92" prefHeight="25.0" prefWidth="312.0"
                               GridPane.rowIndex="2">
                     <font>
                         <Font size="15.0"/>
                     </font>
                 </JFXTextField>
-                <JFXButton fx:id="btnRegresar" layoutX="10.0" layoutY="477.0" onAction="#guardar"
-                           style="-fx-background-color: #004e92;" text="Regresar" textFill="WHITE"
-                           GridPane.columnIndex="1" GridPane.rowIndex="19">
-                    <graphic>
-                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-arrow-circle-o-left" iconSize="25"/>
-                    </graphic>
-                    <font>
-                        <Font name="System Bold" size="18.0"/>
-                    </font>
-                </JFXButton>
             </children>
         </GridPane>
     </children>

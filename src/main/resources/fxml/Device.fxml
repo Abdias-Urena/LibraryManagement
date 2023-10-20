@@ -55,9 +55,10 @@
                         <TableView fx:id="tablaEquipos" prefHeight="200.0" prefWidth="200.0" styleClass="Table-View" stylesheets="@../styles/DashBoardDesign.css" VBox.vgrow="ALWAYS">
                            <columns>
                               <TableColumn fx:id="colMarca" prefWidth="220.0" text="MARCA" />
-                              <TableColumn fx:id="colCargador" prefWidth="220.0" text="CARGADOR" />
                               <TableColumn fx:id="colDisponibilidad" prefWidth="220.0" text="DISPONIBILIDAD" />
                               <TableColumn fx:id="collTipo" prefWidth="220.0" text="TIPO" />
+                              <TableColumn fx:id="collID" prefWidth="220.0" text="ID" />
+                              <TableColumn fx:id="collCharge" prefWidth="220.0" text="CARGADOR" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

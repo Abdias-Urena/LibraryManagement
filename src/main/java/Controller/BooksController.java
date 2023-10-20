@@ -219,18 +219,14 @@ public class BooksController implements Initializable {
         Book libroSeleccionado = tablaLibros.getSelectionModel().getSelectedItem();
 
         if (libroSeleccionado != null) {
-            // Mostrar una confirmación al usuario
             boolean confirmacion = showConfirmationDialog("¿Estás seguro de que deseas eliminar este libro?");
 
             if (confirmacion) {
-                // Borrar el libro de la base de datos
                 boolean exito = deleteBookFromDatabase(libroSeleccionado);
 
                 if (exito) {
-                    // Actualizar la tabla después de borrar
                     UpdateTable();
                 } else {
-                    // Mostrar un mensaje de error si la eliminación falla
                     showAlert("Error al eliminar el libro.");
                 }
             }
@@ -241,9 +237,6 @@ public class BooksController implements Initializable {
 
 
     private boolean deleteBookFromDatabase(Book book) {
-        // Aquí debes implementar el código para eliminar el libro de la base de datos.
-        // Retorna true si la eliminación tiene éxito y false si falla.
-        // Por ejemplo:
         try {
             PreparedStatement pst = connection.prepareStatement("DELETE FROM book WHERE TITLE = ?");
             pst.setString(1, book.getTitle()); // Asume que hay un campo "ID" en la tabla que identifica de manera única cada libro.
