@@ -113,8 +113,7 @@ public class LoanBooksController implements Initializable {
         ObservableList<Book> list_books= FXCollections.observableArrayList();
         try {
             PreparedStatement pst = connection.getConnection().prepareStatement("select AUTHOR,CATEGORY,PUBLIC_DATE,REPRODUC" +
-                    ",TITLE,IS_AVAILABLE, IS_USABLE from Book WHERE TYPE ='F' AND IS_AVAILABLE= 'Y'" +
-                    "AND IS_USABLE= 'N'");
+                    ",TITLE,IS_AVAILABLE, IS_USABLE from Book WHERE TYPE ='F' AND IS_AVAILABLE= 'Y'");
             ResultSet rs = pst.executeQuery();
             returnBooks(list_books, rs);
         } catch (Exception e) {

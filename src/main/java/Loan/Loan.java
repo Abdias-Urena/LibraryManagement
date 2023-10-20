@@ -120,7 +120,7 @@ public class Loan implements LoanBook, LoanDevice {
     public Book addBook(Book book) {
         try {
             DatabaseConnection connection = DatabaseConnection.getInstance();
-            PreparedStatement preparedStatement = connection.getConnection().prepareStatement("SELECT NUMBER_BOOK FROM BOOK WHERE TITLE =?");
+            PreparedStatement preparedStatement = connection.getConnection().prepareStatement("SELECT NUMBER_BOOK FROM BOOK WHERE TITLE = ?");
             preparedStatement.setString(1, book.getTitle());
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
@@ -136,7 +136,7 @@ public class Loan implements LoanBook, LoanDevice {
                 System.out.println("Rows affected: "+row);
                 if(row == 1){
                     System.out.println("Datos insertados");
-                    preparedStatement= connection.getConnection().prepareStatement("UPDATE BOOK SET IS_AVAILABLE=? WHERE NUMBER_BOOK=?");
+                    preparedStatement= connection.getConnection().prepareStatement("UPDATE BOOK SET IS_AVAILABLE = ? WHERE NUMBER_BOOK = ?");
                     preparedStatement.setString(1,"N");
                     preparedStatement.setString(2,number_book);
                     row = preparedStatement.executeUpdate();
@@ -169,8 +169,38 @@ public class Loan implements LoanBook, LoanDevice {
      * {@inheritDoc}
      */
     @Override
-    public Device loanDevice(User user, Device device) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public Device loanDevice(Device device) {
+        try {
+            DatabaseConnection connection = DatabaseConnection.getInstance();
+            PreparedStatement preparedStatement = connection.getConnection().prepareStatement("SELECT NUMBER_DEVICE FROM DEVICE WHERE ID =?");
+            preparedStatement.setString(1, device.getId());
+            ResultSet rs = preparedStatement.executeQuery();
+            if(rs.next()){
+                String number_device = rs.getString("NUMBER_DEVICE");
+                System.out.println(number_device);
+                preparedStatement= connection.getConnection().prepareStatement("INSERT INTO LOAN (EXPIRATION_DATE, LOAN_DATE, ID, NUMBER_DEVICE) VALUES (?,?,?,?)");
+                preparedStatement.setDate(1, java.sql.Date.valueOf(LocalDate.parse(expirationDate)));
+                preparedStatement.setDate(2, java.sql.Date.valueOf(LocalDate.parse(loanDate)));
+                preparedStatement.setString(3, user.getId());
+                preparedStatement.setString(4, number_device);
+                int row = preparedStatement.executeUpdate();
+                System.out.println("Rows affected: "+row);
+                if(row == 1){
+                    System.out.println("Datos insertados");
+                    preparedStatement= connection.getConnection().prepareStatement("UPDATE DEVICE SET IS_AVAILABLE=? WHERE ID=?");
+                    preparedStatement.setString(1,"N");
+                    preparedStatement.setString(2,device.getId());
+                    row = preparedStatement.executeUpdate();
+                    if (row == 1){
+                        System.out.println("Datos actulizados"+row);
+                    }
+                }
+            }
+
+        }catch (SQLException s){
+            System.out.println(s.getErrorCode());
+        }
+        return device;
     }
     /**
      * {@inheritDoc}

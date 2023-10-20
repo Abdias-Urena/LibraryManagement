@@ -30,11 +30,6 @@
                               <FontIcon iconColor="#2196f3" iconLiteral="fa-tag" iconSize="22" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btnEditar" contentDisplay="TOP" layoutX="10.0" layoutY="65.0" maxWidth="1.7976931348623157E308" onAction="#editarPrestamoEquipo" text="Editar">
-                           <graphic>
-                              <FontIcon iconColor="#2196f3" iconLiteral="fa-edit" iconSize="22" />
-                           </graphic>
-                        </JFXButton>
                         <JFXButton fx:id="btnBorrar" contentDisplay="TOP" layoutX="10.0" layoutY="120.0" maxWidth="1.7976931348623157E308" onAction="#borrarPrestamoEquipo" text="Borrar">
                            <graphic>
                               <FontIcon iconColor="#2196f3" iconLiteral="fa-trash-o" iconSize="22" />
@@ -54,7 +49,6 @@
                         </JFXTextField>
                         <TableView fx:id="tablaPrestamoEquipo" prefHeight="200.0" prefWidth="200.0" styleClass="Table-View" stylesheets="@../styles/DashBoardDesign.css" VBox.vgrow="ALWAYS">
                            <columns>
-                              <TableColumn fx:id="colTipoDispos" prefWidth="220.0" text="TIPO" />
                               <TableColumn fx:id="colDispos" prefWidth="76.0" text="DISPOSITIVO" />
                               <TableColumn fx:id="colFechaPrestamo" prefWidth="136.0" text="FECHA PRESTAMO" />
                               <TableColumn fx:id="collFechaLimite" prefWidth="220.0" text="FECHA LIMITE" />

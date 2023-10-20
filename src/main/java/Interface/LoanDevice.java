@@ -14,11 +14,11 @@ public interface LoanDevice {
     /**
      * Realiza un préstamo de un dispositivo a un usuario.
      *
-     * @param user El usuario al que se le prestará el dispositivo.
+     *
      * @param device El dispositivo que se prestará.
      * @return El dispositivo prestado.
      */
-    public Device loanDevice(User user, Device device);
+    public Device loanDevice(Device device);
 
     /**
      * Devuelve un dispositivo prestado.

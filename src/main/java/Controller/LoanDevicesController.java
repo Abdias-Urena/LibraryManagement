@@ -1,7 +1,9 @@
 package Controller;
 
+import Book.Book;
 import Connection.DatabaseConnection;
 import Device.Device;
+import Loan.Loan;
 import Person.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -64,12 +66,14 @@ public class LoanDevicesController implements Initializable {
     @FXML
     private TableColumn<User, ?> colTelefono;
     ObservableList<User> students = FXCollections.observableArrayList();
+    ObservableList<Device> list_combox = FXCollections.observableArrayList();
 
     DatabaseConnection connection = DatabaseConnection.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UpdateTable();
         fillComboBox();
+        list_combox= getDeviceList();
     }
     public void fillComboBox(){
         ObservableList<String> list_comboType = FXCollections.observableArrayList("Tablet","Laptop");
@@ -78,7 +82,14 @@ public class LoanDevicesController implements Initializable {
 
     @FXML
     void guardar(ActionEvent event) {
-
+        User searhStudent = students.filtered(student-> student.getId().equals(textNombre.getText())).stream().findFirst().
+                orElse(null);
+        System.out.println(searhStudent.toString());
+        Loan loan = new Loan(datePickerLimite.getValue().toString(), "1",datePickerActual.getValue().toString(),
+                searhStudent);
+        Device device = list_combox.get(cmbDispDis.getItems().indexOf(cmbDispDis.getValue()));
+        System.out.println(device.toString());
+        loan.loanDevice(device);
     }
 
     public ObservableList<User> getStudentList() {
@@ -139,22 +150,19 @@ public class LoanDevicesController implements Initializable {
     void selectionType(ActionEvent event) {
         switch (cmbTipoDis.getValue()){
             case "Tablet":
-
+                cmbDispDis.setItems(list_combox.filtered(device -> device.getType().equals("Tablet")));
                 break;
             case "Laptop":
-
+                cmbDispDis.setItems(list_combox.filtered(device -> device.getType().equals("Laptop")));
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + cmbTipoDis.getValue());
         }
     }
-    public void fillDisBox(){
-
-    }
     public ObservableList<Device> getDeviceList() {
         ObservableList<Device> list_students = FXCollections.observableArrayList();
         try {
-            PreparedStatement pst = connection.getConnection().prepareStatement("select HAVE from DEVICE");
+            PreparedStatement pst = connection.getConnection().prepareStatement("SELECT ID, TYPE, BRAND from DEVICE WHERE IS_AVAILABLE= 'Y' AND IS_USABLE='N'");
             ResultSet rs = pst.executeQuery();
             returnDevices(list_students, rs);
         } catch (Exception e) {
@@ -167,9 +175,16 @@ public class LoanDevicesController implements Initializable {
             if(!rs.next()){
                 return;
             }
-            list.add(new Device(rs.getString("ADDRESS"), rs.getString("EMAIL"),
-                    rs.getString("PHONE_NUMBER"), rs.getString("ID"),
-                    rs.getString("LAST_NAME"), rs.getString("NAME")));
+            String type = rs.getString("TYPE");
+            Device device;
+            if(type.equals("T")){
+                device=new Device(rs.getString("BRAND"), true,
+                        rs.getString("ID"), true, true, "Tablet");
+            }else {
+                device=new Device(rs.getString("BRAND"), true,
+                        rs.getString("ID"), true, true, "Laptop");
+            }
+            list.add(device);
             System.out.println(list.get(0).toString());
             returnDevices(list, rs);
         }catch (SQLException s){
