@@ -61,7 +61,8 @@ public class RegisterStudentController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         fillCombox();
     }
-    void fillCombox(){
+
+    void fillCombox() {
         ObservableList<String> list_combox = FXCollections.observableArrayList();
         list_combox.add("Sin beca");
         list_combox.add("BLFZC1");
@@ -72,24 +73,27 @@ public class RegisterStudentController implements Initializable {
         list_combox.add("Beca Omar Dengo");
         JComboBox.setItems(list_combox);
     }
+
     @FXML
     void saveStudent(ActionEvent event) {
         System.out.println("Hola");
         String grantType = JComboBox.getValue();
-        if(!grantType.equals("Sin beca") || grantType != null){
-            Student user = new Student(JTextAddress.getText(),JTextEmail.getText(), JTextTelephone.getText(),
+        if (!grantType.equals("Sin beca") || grantType != null) {
+            Student user = new Student(JTextAddress.getText(), JTextEmail.getText(), JTextTelephone.getText(),
                     JTextId.getText(), JTextSurname.getText(), JTextName.getText(),
                     JTextCareer.getText(), true);
-            if(isSave(user)){
-                JOptionPane.showMessageDialog(null,"Registro Exitoso");
+            if (isSave(user)) {
+                System.out.println("Usuario agregado");
+                clean();
             }
 
         }
     }
-    boolean isSave(Student user){
+
+    boolean isSave(Student user) {
         System.out.println(user.getId());
-        try{
-            if(user.isGrant()){//Si tiene beca se pone "Y"
+        try {
+            if (user.isGrant()) {//Si tiene beca se pone "Y"
                 DatabaseConnection connection = DatabaseConnection.getInstance();
                 PreparedStatement preparedStatement = connection.getConnection().prepareStatement("INSERT INTO USER (ID, NAME, LAST_NAME, ADDRESS, EMAIL, PHONE_NUMBER, ROL, CAREER, `GRANT`) VALUES (?,?,?,?,?,?,?,?,?)");
                 preparedStatement.setString(1, user.getId());
@@ -103,15 +107,25 @@ public class RegisterStudentController implements Initializable {
                 preparedStatement.setString(9, "Y");
                 int row = preparedStatement.executeUpdate();
                 System.out.println(row);
-                if(row > 0){
+                if (row > 0) {
                     preparedStatement.close();
                     return true;
                 }
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getErrorCode());
         }
         return false;
+    }
+
+    public void clean() {
+        JTextName.setText("");
+        JTextSurname.setText("");
+        JTextAddress.setText("");
+        JTextEmail.setText("");
+        JTextTelephone.setText("");
+        JTextCareer.setText("");
+        JComboBox.setValue("");
     }
 
 }

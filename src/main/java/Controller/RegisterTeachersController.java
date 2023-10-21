@@ -64,8 +64,9 @@ public class RegisterTeachersController implements Initializable {
         Teacher user = new Teacher(textDireccion.getText(), textGmail.getText(), textNumero.getText(), textID.getText(),
                 textApellido.getText(), textNombre.getText(), textDepartamento.getText());
         if(isSave(user)){
-            JOptionPane.showMessageDialog(null,"Registro Exitoso");
+            System.out.println("Usuario agregado");
         }
+        clean();
     }
     boolean isSave(Teacher user){
         System.out.println(user.getDepartament());
@@ -90,6 +91,15 @@ public class RegisterTeachersController implements Initializable {
             System.out.println(e.getErrorCode());
         }
         return false;
+    }
+    public void clean(){
+        textNombre.setText("");
+        textApellido.setText("");
+        textDireccion.setText("");
+        textGmail.setText("");
+        textNumero.setText("");
+        textDepartamento.setText("");
+        textID.setText("");
     }
 
 }

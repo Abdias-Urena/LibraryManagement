@@ -85,32 +85,37 @@ public class LoanBooksController implements Initializable {
         UpdateTable();
         fillCombox();
     }
+
     @FXML
     void guardar(ActionEvent event) {
-        User searhStudent = students.filtered(student-> student.getId().equals(textNombre.getText())).stream().findFirst().
+        User searhStudent = students.filtered(student -> student.getId().equals(textNombre.getText())).stream().findFirst().
                 orElse(null);
         System.out.println(searhStudent.toString());
-        Loan loan = new Loan(datePickerLimite.getValue().toString(), "1",datePickerActual.getValue().toString(),
+        Loan loan = new Loan(datePickerLimite.getValue().toString(), "1", datePickerActual.getValue().toString(),
                 searhStudent);
         Book book = list_combox.get(comboBoxLibros.getItems().indexOf(comboBoxLibros.getValue()));
         System.out.println(book.toString());
         loan.addBook(book);
+        clean();
     }
-    void fillCombox(){
+
+    void fillCombox() {
         list_combox = getBookList();
         ObservableList<String> list = FXCollections.observableArrayList();
-        setListOfCombox(list, list_combox, list_combox.size()-1);
+        setListOfCombox(list, list_combox, list_combox.size() - 1);
         comboBoxLibros.setItems(list);
     }
-    public void setListOfCombox(ObservableList<String> list, ObservableList<Book> list_combox, int index){
-        if(index < 0){
+
+    public void setListOfCombox(ObservableList<String> list, ObservableList<Book> list_combox, int index) {
+        if (index < 0) {
             return;
         }
         list.add(list_combox.get(index).getTitle());
-        setListOfCombox(list, list_combox, index -1);
+        setListOfCombox(list, list_combox, index - 1);
     }
+
     public ObservableList<Book> getBookList() {
-        ObservableList<Book> list_books= FXCollections.observableArrayList();
+        ObservableList<Book> list_books = FXCollections.observableArrayList();
         try {
             PreparedStatement pst = connection.getConnection().prepareStatement("select AUTHOR,CATEGORY,PUBLIC_DATE,REPRODUC" +
                     ",TITLE,IS_AVAILABLE, IS_USABLE from Book WHERE TYPE ='F' AND IS_AVAILABLE= 'Y' AND IS_USABLE='Y'");
@@ -121,6 +126,7 @@ public class LoanBooksController implements Initializable {
         }
         return list_books;
     }
+
     public ObservableList<User> getStudentList() {
         ObservableList<User> list_students = FXCollections.observableArrayList();
         try {
@@ -132,9 +138,10 @@ public class LoanBooksController implements Initializable {
         }
         return list_students;
     }
-    public void returnStudents(ObservableList<User> list, ResultSet rs){
+
+    public void returnStudents(ObservableList<User> list, ResultSet rs) {
         try {
-            if(!rs.next()){
+            if (!rs.next()) {
                 return;
             }
             list.add(new User(rs.getString("ADDRESS"), rs.getString("EMAIL"),
@@ -142,21 +149,22 @@ public class LoanBooksController implements Initializable {
                     rs.getString("LAST_NAME"), rs.getString("NAME")));
             System.out.println(list.get(0).toString());
             returnStudents(list, rs);
-        }catch (SQLException s){
+        } catch (SQLException s) {
             System.out.println(s.getErrorCode());
         }
     }
-    public void returnBooks(ObservableList<Book> list, ResultSet rs){
+
+    public void returnBooks(ObservableList<Book> list, ResultSet rs) {
         try {
-            if(!rs.next()){
+            if (!rs.next()) {
                 return;
             }
-            list.add(new FisicBook( true, false, rs.getString("AUTHOR"), rs.getString("CATEGORY"),
+            list.add(new FisicBook(true, false, rs.getString("AUTHOR"), rs.getString("CATEGORY"),
                     rs.getString("PUBLIC_DATE"), rs.getString("REPRODUC"),
-                    rs.getString("TITLE"),"Fisico"));
+                    rs.getString("TITLE"), "Fisico"));
             System.out.println(list.get(0).toString());
             returnBooks(list, rs);
-        }catch (SQLException s){
+        } catch (SQLException s) {
             System.out.println(s.getErrorCode());
         }
     }
@@ -171,7 +179,8 @@ public class LoanBooksController implements Initializable {
         students = getStudentList();
         tablaEstudiantes.setItems(students);
     }
-    public void UpdateTable(String id){
+
+    public void UpdateTable(String id) {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
         colDireccion.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -185,9 +194,17 @@ public class LoanBooksController implements Initializable {
         );
         tablaEstudiantes.setItems(filteredStudents);
     }
+
     @FXML
     void regresarP(ActionEvent event) {
 
+    }
+
+    public void clean() {
+        comboBoxLibros.setValue("");
+        datePickerLimite.setValue(null);
+        datePickerActual.setValue(null);
+        textNombre.setText("");
     }
 
 

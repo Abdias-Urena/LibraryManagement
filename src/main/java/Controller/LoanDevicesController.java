@@ -90,6 +90,7 @@ public class LoanDevicesController implements Initializable {
         Device device = list_combox.get(cmbDispDis.getItems().indexOf(cmbDispDis.getValue()));
         System.out.println(device.toString());
         loan.loanDevice(device);
+        clean();
     }
 
     public ObservableList<User> getStudentList() {
@@ -190,5 +191,12 @@ public class LoanDevicesController implements Initializable {
         }catch (SQLException s){
             System.out.println(s.getErrorCode());
         }
+    }
+    public void clean() {
+        cmbTipoDis.setValue("");
+        cmbDispDis.setValue(null);
+        datePickerLimite.setValue(null);
+        datePickerActual.setValue(null);
+        textNombre.setText("");
     }
 }
