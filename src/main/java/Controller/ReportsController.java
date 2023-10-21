@@ -4,6 +4,7 @@ import Book.*;
 import Connection.DatabaseConnection;
 import Device.Device;
 import Loan.Loan;
+import Notification.Notification;
 import Person.Student;
 import Person.User;
 import javafx.beans.property.SimpleStringProperty;
@@ -135,6 +136,8 @@ public class ReportsController implements Initializable {
     ObservableList<Loan> loans = FXCollections.observableArrayList();
     ObservableList<Book> BookList = FXCollections.observableArrayList();
     ObservableList<Device> DeviceList = FXCollections.observableArrayList();
+    Notification noti = new Notification();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -300,6 +303,12 @@ public class ReportsController implements Initializable {
             preparedStatement.setString(3, textTittle.getText());
             preparedStatement.setString(4, cmbReportes.getValue());
             int row = preparedStatement.executeUpdate();
+            if(row == 1){
+                noti.modifyNotification("Reporte registrado", "El reporte se ha registrado con éxito", "/Images/success.png");
+            }else{
+                noti.modifyNotification("Error", "Error al registrar el reporte", "/Images/error.png");
+
+            }
             preparedStatement.close();
         }catch (SQLException s){
             System.out.println(s.getErrorCode());

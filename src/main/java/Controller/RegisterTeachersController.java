@@ -1,6 +1,7 @@
 package Controller;
 
 import Connection.DatabaseConnection;
+import Notification.Notification;
 import Person.Student;
 import Person.Teacher;
 import Person.User;
@@ -49,7 +50,7 @@ public class RegisterTeachersController implements Initializable {
 
     @FXML
     private JFXTextField textID;
-
+    Notification noti = new Notification();
 
     @FXML
     void regresarP(ActionEvent event) {
@@ -64,7 +65,9 @@ public class RegisterTeachersController implements Initializable {
         Teacher user = new Teacher(textDireccion.getText(), textGmail.getText(), textNumero.getText(), textID.getText(),
                 textApellido.getText(), textNombre.getText(), textDepartamento.getText());
         if(isSave(user)){
-            System.out.println("Usuario agregado");
+            noti.modifyNotification("Docente registrado", "El docente se ha registrado con éxito", "/Images/success.png");
+        }else{
+            noti.modifyNotification("Error", "Error al registrar el docente", "/Images/error.png");
         }
         clean();
     }

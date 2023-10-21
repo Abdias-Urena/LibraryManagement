@@ -4,6 +4,7 @@ import Book.*;
 import Connection.DatabaseConnection;
 import Interface.LoanBook;
 import Loan.Loan;
+import Notification.Notification;
 import Person.Student;
 import Person.User;
 import javafx.collections.FXCollections;
@@ -79,6 +80,7 @@ public class LoanBooksController implements Initializable {
     DatabaseConnection connection = DatabaseConnection.getInstance();
 
     ObservableList<Book> list_combox = FXCollections.observableArrayList();
+    Notification noti = new Notification();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -13,6 +13,7 @@ import Connection.DatabaseConnection;
 import Device.Device;
 import Interface.LoanBook;
 import Interface.LoanDevice;
+import Notification.Notification;
 import Person.User;
 
 import java.sql.PreparedStatement;
@@ -118,6 +119,7 @@ public class Loan implements LoanBook, LoanDevice {
      */
     @Override
     public Book addBook(Book book) {
+        Notification noti = new Notification();
         try {
             DatabaseConnection connection = DatabaseConnection.getInstance();
             PreparedStatement preparedStatement = connection.getConnection().prepareStatement("SELECT NUMBER_BOOK FROM BOOK WHERE TITLE = ?");
@@ -141,7 +143,10 @@ public class Loan implements LoanBook, LoanDevice {
                     preparedStatement.setString(2,number_book);
                     row = preparedStatement.executeUpdate();
                     if (row == 1){
+                        noti.modifyNotification("Prestamo registrado", "El prestamo se ha registrado con éxito", "/Images/success.png");
                         System.out.println("Datos actulizados"+row);
+                    }else{
+                        noti.modifyNotification("Error", "Error al registrar el prestamo", "/Images/error.png");
                     }
                 }
             }
@@ -170,6 +175,8 @@ public class Loan implements LoanBook, LoanDevice {
      */
     @Override
     public Device loanDevice(Device device) {
+        Notification noti = new Notification();
+
         try {
             DatabaseConnection connection = DatabaseConnection.getInstance();
             PreparedStatement preparedStatement = connection.getConnection().prepareStatement("SELECT NUMBER_DEVICE FROM DEVICE WHERE ID =?");
@@ -192,7 +199,10 @@ public class Loan implements LoanBook, LoanDevice {
                     preparedStatement.setString(2,device.getId());
                     row = preparedStatement.executeUpdate();
                     if (row == 1){
+                        noti.modifyNotification("Prestamo registrado", "El prestamo se ha registrado con éxito", "/Images/success.png");
                         System.out.println("Datos actulizados"+row);
+                    }else{
+                        noti.modifyNotification("Error", "Error al registrar el prestamo", "/Images/error.png");
                     }
                 }
             }

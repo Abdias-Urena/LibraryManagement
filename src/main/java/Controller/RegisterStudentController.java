@@ -1,6 +1,7 @@
 package Controller;
 
 import Connection.DatabaseConnection;
+import Notification.Notification;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
@@ -55,6 +56,7 @@ public class RegisterStudentController implements Initializable {
     private JFXButton btnSave;
     @FXML
     private JFXTextField JTextId;
+    Notification noti = new Notification();
 
 
     @Override
@@ -83,9 +85,12 @@ public class RegisterStudentController implements Initializable {
                     JTextId.getText(), JTextSurname.getText(), JTextName.getText(),
                     JTextCareer.getText(), true);
             if (isSave(user)) {
-                System.out.println("Usuario agregado");
-                clean();
+                noti.modifyNotification("Estudiante registrado", "El estudiante se ha registrado con éxito", "/Images/success.png");
+
+            }else{
+                noti.modifyNotification("Error", "Error al registrar el estudiante", "/Images/error.png");
             }
+            clean();
 
         }
     }
