@@ -6,6 +6,8 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -36,25 +38,30 @@
       </Text>
       <Pane layoutY="100.0" prefHeight="533.0" prefWidth="871.0">
          <children>
-            <Label layoutX="337.0" layoutY="333.0" text="Reporte:">
+            <Label layoutX="45.0" layoutY="329.0" text="Reporte:">
                <font>
                   <Font name="Tahoma" size="16.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="cmbReportes" layoutX="336.0" layoutY="364.0" promptText="Tipo Reporte" />
-            <JFXTextField fx:id="textTittle" layoutX="336.0" layoutY="62.0" />
-            <Label layoutX="336.0" layoutY="107.0" text="Dia Reporte:">
+            <JFXComboBox fx:id="cmbReportes" layoutX="51.0" layoutY="355.0" onAction="#searhType" promptText="Tipo Reporte" />
+            <Label layoutX="44.0" layoutY="32.0" text="Título:">
                <font>
                   <Font name="Tahoma" size="16.0" />
                </font>
             </Label>
-            <JFXDatePicker fx:id="DatePicker" layoutX="336.0" layoutY="147.0" />
-            <Label layoutX="337.0" layoutY="209.0" text="Descripción:">
+            <JFXTextField fx:id="textTittle" layoutX="44.0" layoutY="58.0" />
+            <Label layoutX="44.0" layoutY="103.0" text="Dia Reporte:">
                <font>
                   <Font name="Tahoma" size="16.0" />
                </font>
             </Label>
-            <JFXTextArea fx:id="textAreaDescri" layoutX="337.0" layoutY="238.0" prefHeight="81.0" prefWidth="232.0" />
+            <JFXDatePicker fx:id="DatePicker" layoutX="44.0" layoutY="143.0" />
+            <Label layoutX="45.0" layoutY="205.0" text="Descripción:">
+               <font>
+                  <Font name="Tahoma" size="16.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="textAreaDescri" layoutX="45.0" layoutY="234.0" prefHeight="81.0" prefWidth="232.0" />
             <JFXButton fx:id="btnGuardar" layoutX="332.0" layoutY="466.0" onAction="#guardar" style="-fx-background-color: #004e92;" text="Guardar" textFill="WHITE">
                <graphic>
                   <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fa-save" iconSize="25" />
@@ -63,12 +70,62 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </JFXButton>
+
+            <TableView fx:id="tablaLibros" layoutX="360.0" layoutY="23.0" prefHeight="427.0" prefWidth="474.0" styleClass="Table-View" stylesheets="@../styles/DashBoardDesign.css" visible="false">
+               <columns>
+                  <TableColumn fx:id="colAutor" prefWidth="220.0" text="AUTOR" />
+                  <TableColumn fx:id="colCategoria" prefWidth="220.0" text="CATEGORIA" />
+                  <TableColumn fx:id="colPublicacion" prefWidth="220.0" text="PUBLICACION" />
+                  <TableColumn fx:id="colReproduccion" prefWidth="220.0" text="REPRODUCCION" />
+                  <TableColumn fx:id="colTitle" prefWidth="220.0" text="TITLE" />
+                  <TableColumn fx:id="colTipo" prefWidth="220.0" text="TIPO LIBRO" />
+                  <TableColumn fx:id="colURL" prefWidth="220.0" text="URL" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+
+            <TableView fx:id="tablaEquipos" layoutX="328.0" layoutY="13.0" prefHeight="397.0" prefWidth="520.0" styleClass="Table-View" stylesheets="@../styles/DashBoardDesign.css" visible="false">
+               <columns>
+                  <TableColumn fx:id="colMarca" prefWidth="220.0" text="MARCA" />
+                  <TableColumn fx:id="colDisponibilidad" prefWidth="220.0" text="DISPONIBILIDAD" />
+                  <TableColumn fx:id="collTipo" prefWidth="220.0" text="TIPO" />
+                  <TableColumn fx:id="collID" prefWidth="220.0" text="ID" />
+                  <TableColumn fx:id="collCharge" prefWidth="220.0" text="CARGADOR" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+
+            <TableView fx:id="tablaPrestamoLoan" layoutX="360.0" layoutY="27.0" prefHeight="397.0" prefWidth="474.0" styleClass="Table-View" stylesheets="@../styles/DashBoardDesign.css" visible="false">
+               <columns>
+                  <TableColumn fx:id="colLibroPrestamoLoan" prefWidth="220.0" text="PRESTAMO" />
+                  <TableColumn fx:id="colFechaPrestamoLoan" prefWidth="220.0" text="FECHA PRESTAMO" />
+                  <TableColumn fx:id="colFechaLimiteLoan" prefWidth="220.0" text="FECHA LIMITE" />
+                  <TableColumn fx:id="collPersonaLoan" prefWidth="220.0" text="PERSONA" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+
+            <TableView fx:id="tablaUsers" layoutX="391.0" layoutY="23.0" prefHeight="412.0" prefWidth="456.0" styleClass="Table-View" stylesheets="@../styles/DashBoardDesign.css" visible="false">
+               <columns>
+                  <TableColumn fx:id="colNombre" prefWidth="220.0" text="NOMBRE" />
+                  <TableColumn fx:id="colApellido" prefWidth="220.0" text="APELLIDO" />
+                  <TableColumn fx:id="colDireccion" prefWidth="220.0" text="DIRECCION" />
+                  <TableColumn fx:id="colCorreo" prefWidth="220.0" text="CORREO" />
+                  <TableColumn fx:id="colTelefono" prefWidth="220.0" text="TELEFONO" />
+                  <TableColumn fx:id="colType" prefWidth="220.0" text="TIPO" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            
          </children>
       </Pane>
-      <Label layoutX="337.0" layoutY="128.0" text="Título:">
-         <font>
-            <Font name="Tahoma" size="16.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
