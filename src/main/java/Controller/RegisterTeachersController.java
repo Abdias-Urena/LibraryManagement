@@ -19,6 +19,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * The type Register teachers controller.
+ */
 public class RegisterTeachersController implements Initializable {
 
     @FXML
@@ -50,8 +53,16 @@ public class RegisterTeachersController implements Initializable {
 
     @FXML
     private JFXTextField textID;
+    /**
+     * The Noti.
+     */
     Notification noti = new Notification();
 
+    /**
+     * Regresar p.
+     *
+     * @param event the event
+     */
     @FXML
     void regresarP(ActionEvent event) {
 
@@ -60,6 +71,12 @@ public class RegisterTeachersController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
+
+    /**
+     * Guardar.
+     *
+     * @param event the event
+     */
     @FXML
     void guardar(ActionEvent event) {
         Teacher user = new Teacher(textDireccion.getText(), textGmail.getText(), textNumero.getText(), textID.getText(),
@@ -71,6 +88,13 @@ public class RegisterTeachersController implements Initializable {
         }
         clean();
     }
+
+    /**
+     * Is save boolean.
+     *
+     * @param user the user
+     * @return the boolean
+     */
     boolean isSave(Teacher user){
         System.out.println(user.getDepartament());
         try{
@@ -95,6 +119,10 @@ public class RegisterTeachersController implements Initializable {
         }
         return false;
     }
+
+    /**
+     * Clean.
+     */
     public void clean(){
         textNombre.setText("");
         textApellido.setText("");

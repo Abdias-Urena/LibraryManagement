@@ -22,6 +22,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.*;
 
+/**
+ * The type Loan.
+ */
 public class Loan implements LoanBook, LoanDevice {
 
     private String expirationDate;
@@ -31,12 +34,14 @@ public class Loan implements LoanBook, LoanDevice {
     private String loanDate;
 
     private User user;
+
     /**
      * Constructor por defecto para la clase `Loan`.
      */
     public Loan() {
     }
-      /**
+
+    /**
      * Constructor parametrizado para la clase `Loan`.
      *
      * @param expirationDate La fecha de vencimiento del préstamo.
@@ -50,7 +55,8 @@ public class Loan implements LoanBook, LoanDevice {
         this.loanDate = loanDate;
         this.user = user;
     }
-     /**
+
+    /**
      * Obtiene la fecha de vencimiento del préstamo.
      *
      * @return La fecha de vencimiento.
@@ -58,6 +64,7 @@ public class Loan implements LoanBook, LoanDevice {
     public String getExpirationDate() {
         return expirationDate;
     }
+
     /**
      * Establece la fecha de vencimiento del préstamo.
      *
@@ -66,6 +73,7 @@ public class Loan implements LoanBook, LoanDevice {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+
     /**
      * Obtiene el ID único del préstamo.
      *
@@ -74,6 +82,7 @@ public class Loan implements LoanBook, LoanDevice {
     public String getId() {
         return id;
     }
+
     /**
      * Establece el ID único del préstamo.
      *
@@ -82,7 +91,8 @@ public class Loan implements LoanBook, LoanDevice {
     public void setId(String id) {
         this.id = id;
     }
-     /**
+
+    /**
      * Obtiene la fecha en la que se realizó el préstamo.
      *
      * @return La fecha del préstamo.
@@ -90,7 +100,8 @@ public class Loan implements LoanBook, LoanDevice {
     public String getLoanDate() {
         return loanDate;
     }
-     /**
+
+    /**
      * Establece la fecha en la que se realizó el préstamo.
      *
      * @param loanDate La nueva fecha del préstamo.
@@ -98,7 +109,8 @@ public class Loan implements LoanBook, LoanDevice {
     public void setLoanDate(String loanDate) {
         this.loanDate = loanDate;
     }
-     /**
+
+    /**
      * Obtiene el usuario al que se le prestó el artículo.
      *
      * @return El usuario.
@@ -106,7 +118,8 @@ public class Loan implements LoanBook, LoanDevice {
     public User getUser() {
         return user;
     }
-     /**
+
+    /**
      * Establece el usuario al que se le prestó el artículo.
      *
      * @param user El nuevo usuario.

@@ -15,6 +15,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Ticket test.
  *
  * @author Abdias
  */
@@ -22,39 +23,60 @@ public class TicketTest {
 
     private Ticket ticket;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         // Crear una instancia de Ticket antes de cada prueba
         ticket = new Ticket("Descripción del ticket", 100, "T123");
     }
 
+    /**
+     * Test get description.
+     */
     @Test
     void testGetDescription() {
         assertEquals("Descripción del ticket", ticket.getDescription());
     }
 
+    /**
+     * Test set description.
+     */
     @Test
     void testSetDescription() {
         ticket.setDescription("Nueva descripción");
         assertEquals("Nueva descripción", ticket.getDescription());
     }
 
+    /**
+     * Test get price ticket.
+     */
     @Test
     void testGetPriceTicket() {
         assertEquals(100, ticket.getPriceTicket());
     }
 
+    /**
+     * Test set price ticket.
+     */
     @Test
     void testSetPriceTicket() {
         ticket.setPriceTicket(200);
         assertEquals(200, ticket.getPriceTicket());
     }
 
+    /**
+     * Test get ticket.
+     */
     @Test
     void testGetTicket() {
         assertEquals("T123", ticket.getTicket());
     }
 
+    /**
+     * Test set ticket.
+     */
     @Test
     void testSetTicket() {
         ticket.setTicket("T456");

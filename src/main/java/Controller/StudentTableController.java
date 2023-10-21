@@ -34,6 +34,9 @@ import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The type Student table controller.
+ */
 public class StudentTableController implements Initializable {
 
     @FXML
@@ -82,8 +85,14 @@ public class StudentTableController implements Initializable {
 
     private RegisterStudentController registerStudentController;
 
+    /**
+     * The Students.
+     */
     ObservableList<Student> students = FXCollections.observableArrayList();
 
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
 
 
@@ -91,6 +100,12 @@ public class StudentTableController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         UpdateTable();
     }
+
+    /**
+     * Gets student list.
+     *
+     * @return the student list
+     */
     public ObservableList<Student> getStudentList() {
         ObservableList<Student> list_students = FXCollections.observableArrayList();
         try {
@@ -102,6 +117,13 @@ public class StudentTableController implements Initializable {
         }
         return list_students;
     }
+
+    /**
+     * Return students.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnStudents(ObservableList<Student> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -119,6 +141,9 @@ public class StudentTableController implements Initializable {
     }
 
 
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -136,6 +161,12 @@ public class StudentTableController implements Initializable {
         students = getStudentList();
         tablaEstudiantes.setItems(students);
     }
+
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id){
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -159,27 +190,53 @@ public class StudentTableController implements Initializable {
         tablaEstudiantes.setItems(filteredStudents);
     }
 
+    /**
+     * Borrar estudiante.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarEstudiante(ActionEvent event) {
 
     }
 
+    /**
+     * Buscar estudiante.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarEstudiante(KeyEvent event) {
         String id = textBuscar.getText();
         UpdateTable(id);
     }
 
+    /**
+     * Editar estudiante.
+     *
+     * @param event the event
+     */
     @FXML
     void editarEstudiante(ActionEvent event) {
 
     }
 
+    /**
+     * Listar estudiantes.
+     *
+     * @param event the event
+     */
     @FXML
     void listarEstudiantes(ActionEvent event) {
         UpdateTable();
     }
 
+    /**
+     * Nuevo estudiante.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevoEstudiante(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));

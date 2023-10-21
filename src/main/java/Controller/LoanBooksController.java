@@ -32,6 +32,9 @@ import javafx.scene.input.KeyEvent;
 
 import javafx.util.StringConverter;
 
+/**
+ * The type Loan books controller.
+ */
 public class LoanBooksController implements Initializable {
 
 
@@ -75,11 +78,23 @@ public class LoanBooksController implements Initializable {
     private TableColumn<User, String> colTelefono;
 
 
+    /**
+     * The Students.
+     */
     ObservableList<User> students = FXCollections.observableArrayList();
 
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
 
+    /**
+     * The List combox.
+     */
     ObservableList<Book> list_combox = FXCollections.observableArrayList();
+    /**
+     * The Noti.
+     */
     Notification noti = new Notification();
 
     @Override
@@ -88,6 +103,11 @@ public class LoanBooksController implements Initializable {
         fillCombox();
     }
 
+    /**
+     * Guardar.
+     *
+     * @param event the event
+     */
     @FXML
     void guardar(ActionEvent event) {
         User searhStudent = students.filtered(student -> student.getId().equals(textNombre.getText())).stream().findFirst().
@@ -101,6 +121,9 @@ public class LoanBooksController implements Initializable {
         clean();
     }
 
+    /**
+     * Fill combox.
+     */
     void fillCombox() {
         list_combox = getBookList();
         ObservableList<String> list = FXCollections.observableArrayList();
@@ -108,6 +131,13 @@ public class LoanBooksController implements Initializable {
         comboBoxLibros.setItems(list);
     }
 
+    /**
+     * Sets list of combox.
+     *
+     * @param list        the list
+     * @param list_combox the list combox
+     * @param index       the index
+     */
     public void setListOfCombox(ObservableList<String> list, ObservableList<Book> list_combox, int index) {
         if (index < 0) {
             return;
@@ -116,6 +146,11 @@ public class LoanBooksController implements Initializable {
         setListOfCombox(list, list_combox, index - 1);
     }
 
+    /**
+     * Gets book list.
+     *
+     * @return the book list
+     */
     public ObservableList<Book> getBookList() {
         ObservableList<Book> list_books = FXCollections.observableArrayList();
         try {
@@ -129,6 +164,11 @@ public class LoanBooksController implements Initializable {
         return list_books;
     }
 
+    /**
+     * Gets student list.
+     *
+     * @return the student list
+     */
     public ObservableList<User> getStudentList() {
         ObservableList<User> list_students = FXCollections.observableArrayList();
         try {
@@ -141,6 +181,12 @@ public class LoanBooksController implements Initializable {
         return list_students;
     }
 
+    /**
+     * Return students.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnStudents(ObservableList<User> list, ResultSet rs) {
         try {
             if (!rs.next()) {
@@ -156,6 +202,12 @@ public class LoanBooksController implements Initializable {
         }
     }
 
+    /**
+     * Return books.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnBooks(ObservableList<Book> list, ResultSet rs) {
         try {
             if (!rs.next()) {
@@ -172,6 +224,9 @@ public class LoanBooksController implements Initializable {
     }
 
 
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -182,6 +237,11 @@ public class LoanBooksController implements Initializable {
         tablaEstudiantes.setItems(students);
     }
 
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id) {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -197,11 +257,19 @@ public class LoanBooksController implements Initializable {
         tablaEstudiantes.setItems(filteredStudents);
     }
 
+    /**
+     * Regresar p.
+     *
+     * @param event the event
+     */
     @FXML
     void regresarP(ActionEvent event) {
 
     }
 
+    /**
+     * Clean.
+     */
     public void clean() {
         comboBoxLibros.setValue("");
         datePickerLimite.setValue(null);
@@ -210,6 +278,11 @@ public class LoanBooksController implements Initializable {
     }
 
 
+    /**
+     * Search.
+     *
+     * @param event the event
+     */
     @FXML
     void search(KeyEvent event) {
         String id = textNombre.getText();

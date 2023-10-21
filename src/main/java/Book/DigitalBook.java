@@ -21,13 +21,13 @@ public class DigitalBook extends Book {
      * Constructor de la clase `DigitalBook` que inicializa la URL de acceso y
      * otros detalles del libro.
      *
-     * @param url La URL de acceso al libro digital.
-     * @param author El autor del libro digital.
-     * @param category La categoría del libro digital.
+     * @param url             La URL de acceso al libro digital.
+     * @param author          El autor del libro digital.
+     * @param category        La categoría del libro digital.
      * @param publicationDate La fecha de publicación del libro digital.
-     * @param reproduction La información sobre la reproducción del libro
-     * digital.
-     * @param title El título del libro digital.
+     * @param reproduction    La información sobre la reproducción del libro digital.
+     * @param title           El título del libro digital.
+     * @param type            the type
      */
     public DigitalBook(String url, String author, String category, String publicationDate, String reproduction, String title, String type) {
         super(author, category, publicationDate, reproduction, title, type);

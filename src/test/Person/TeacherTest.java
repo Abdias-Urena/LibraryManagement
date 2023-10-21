@@ -8,17 +8,24 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Teacher test.
  *
  * @author Abdias
  */
 public class TeacherTest {
-    
+
+    /**
+     * Test get departament.
+     */
     @Test
     public void testGetDepartament() {
         Teacher teacher = new Teacher("Mathematics");
         assertEquals("Mathematics", teacher.getDepartament());
     }
 
+    /**
+     * Test set departament.
+     */
     @Test
     public void testSetDepartament() {
         Teacher teacher = new Teacher("Physics");
@@ -26,6 +33,9 @@ public class TeacherTest {
         assertEquals("Chemistry", teacher.getDepartament());
     }
 
+    /**
+     * Test to string.
+     */
     @Test
     public void testToString() {
         Teacher teacher = new Teacher("History");

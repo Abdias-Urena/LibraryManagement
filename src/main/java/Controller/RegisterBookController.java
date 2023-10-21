@@ -65,10 +65,22 @@ public class RegisterBookController implements Initializable {
 
     @FXML
     private JFXTextField textURL;
+    /**
+     * The Book.
+     */
     Book book;
 
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
+    /**
+     * The Noti.
+     */
     Notification noti = new Notification();
 
     @Override
@@ -81,11 +93,21 @@ public class RegisterBookController implements Initializable {
     }
 
 
+    /**
+     * Guardar.
+     *
+     * @param event the event
+     */
     @FXML
     void guardar(ActionEvent event) {
         QuerySaveData();
     }
 
+    /**
+     * Save data book book.
+     *
+     * @return the book
+     */
     public Book saveDataBook() {
         if (comboBoxTipoLibro.getValue().equals("Digital")) {
             book = new DigitalBook(textURL.getText(), textAutor.getText(), textCategory.getText(), fechaPicker.getValue().toString(),
@@ -97,6 +119,9 @@ public class RegisterBookController implements Initializable {
         return book;
     }
 
+    /**
+     * Query save data.
+     */
     public void QuerySaveData() {
         String tipoLibro = comboBoxTipoLibro.getValue();
         book = saveDataBook();
@@ -140,6 +165,9 @@ public class RegisterBookController implements Initializable {
         cleanTextField();
     }
 
+    /**
+     * Clean text field.
+     */
     public void cleanTextField(){
         textAutor.setText("");
         textCategory.setText("");
@@ -149,6 +177,12 @@ public class RegisterBookController implements Initializable {
         comboBoxTipoLibro.setValue("");
         fechaPicker.setValue(null);
     }
+
+    /**
+     * Choose book.
+     *
+     * @param event the event
+     */
     @FXML
     void chooseBook(ActionEvent event) {
         if (comboBoxTipoLibro.getValue().equals("Digital")) {

@@ -26,6 +26,9 @@ import Person.*;
 import javax.swing.*;
 
 
+/**
+ * The type Register student controller.
+ */
 public class RegisterStudentController implements Initializable {
 
     @FXML
@@ -56,6 +59,9 @@ public class RegisterStudentController implements Initializable {
     private JFXButton btnSave;
     @FXML
     private JFXTextField JTextId;
+    /**
+     * The Noti.
+     */
     Notification noti = new Notification();
 
 
@@ -64,6 +70,9 @@ public class RegisterStudentController implements Initializable {
         fillCombox();
     }
 
+    /**
+     * Fill combox.
+     */
     void fillCombox() {
         ObservableList<String> list_combox = FXCollections.observableArrayList();
         list_combox.add("Sin beca");
@@ -76,6 +85,11 @@ public class RegisterStudentController implements Initializable {
         JComboBox.setItems(list_combox);
     }
 
+    /**
+     * Save student.
+     *
+     * @param event the event
+     */
     @FXML
     void saveStudent(ActionEvent event) {
         System.out.println("Hola");
@@ -95,6 +109,12 @@ public class RegisterStudentController implements Initializable {
         }
     }
 
+    /**
+     * Is save boolean.
+     *
+     * @param user the user
+     * @return the boolean
+     */
     boolean isSave(Student user) {
         System.out.println(user.getId());
         try {
@@ -123,6 +143,9 @@ public class RegisterStudentController implements Initializable {
         return false;
     }
 
+    /**
+     * Clean.
+     */
     public void clean() {
         JTextName.setText("");
         JTextSurname.setText("");

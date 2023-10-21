@@ -26,8 +26,8 @@ public class Notification {
      * Constructor de la clase `Notification` que inicializa los atributos de la notificación.
      *
      * @param title El título de la notificación.
-     * @param text El texto de la notificación.
-     * @param url La URL de la imagen a mostrar en la notificación.
+     * @param text  El texto de la notificación.
+     * @param url   La URL de la imagen a mostrar en la notificación.
      */
     public Notification(String title, String text, String url) {
         this.title = title;
@@ -93,8 +93,8 @@ public class Notification {
      * Modifica y muestra la notificación con el título, texto y URL proporcionados.
      *
      * @param title El nuevo título de la notificación.
-     * @param text El nuevo texto de la notificación.
-     * @param url La nueva URL de la imagen de la notificación.
+     * @param text  El nuevo texto de la notificación.
+     * @param url   La nueva URL de la imagen de la notificación.
      */
     public void modifyNotification(String title, String text, String url) {
         Image img = new Image(url);

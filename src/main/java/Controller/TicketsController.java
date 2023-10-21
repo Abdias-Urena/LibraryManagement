@@ -25,6 +25,9 @@ import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
 
 
+/**
+ * The type Tickets controller.
+ */
 public class TicketsController implements Initializable {
 
     @FXML
@@ -44,13 +47,34 @@ public class TicketsController implements Initializable {
 
     @FXML
     private JFXButton btnCalculate;
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
+    /**
+     * The Ticket.
+     */
     Ticket ticket;
 
+    /**
+     * The User list.
+     */
     ObservableList<String> userList = getUserList();
 
+    /**
+     * The Notification.
+     */
     Notification notification = new Notification();
+
+    /**
+     * Calculate price.
+     *
+     * @param event the event
+     */
     @FXML
     void calculatePrice(ActionEvent event) {
         if (verifyHasLoan()) {
@@ -65,16 +89,31 @@ public class TicketsController implements Initializable {
     }
 
 
+    /**
+     * Guardar ticket.
+     *
+     * @param event the event
+     */
     @FXML
     void guardarTicket(ActionEvent event) {
         QuerySaveData();
     }
 
+    /**
+     * Save data ticket.
+     *
+     * @return the ticket
+     */
     public Ticket saveData() {
         ticket = new Ticket(textAreaDesc.getText(), Integer.parseInt(labelPrice.getText()), cmbUser.getValue());
         return ticket;
     }
 
+    /**
+     * Verify has loan boolean.
+     *
+     * @return the boolean
+     */
     public boolean verifyHasLoan() {
         ticket = new Ticket(textAreaDesc.getText(), 0, cmbUser.getValue());
         try {
@@ -90,6 +129,9 @@ public class TicketsController implements Initializable {
         }
     }
 
+    /**
+     * Query save data.
+     */
     public void QuerySaveData() {
         if (!labelPrice.getText().equals("0") && verifyHasLoan()) {
             ticket = saveData();
@@ -120,6 +162,11 @@ public class TicketsController implements Initializable {
         }
     }
 
+    /**
+     * Gets user list.
+     *
+     * @return the user list
+     */
     public ObservableList<String> getUserList() {
         ObservableList<String> userList = FXCollections.observableArrayList();
         try {
@@ -138,6 +185,9 @@ public class TicketsController implements Initializable {
 
     }
 
+    /**
+     * Fill combo box.
+     */
     public void fillComboBox() {
         userList = getUserList();
         cmbUser.setItems(userList);

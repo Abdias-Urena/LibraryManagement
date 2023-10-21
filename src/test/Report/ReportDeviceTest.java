@@ -9,18 +9,25 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Report device test.
  *
  * @author Abdias
  */
 public class ReportDeviceTest {
-    
-     @Test
+
+    /**
+     * Test get device.
+     */
+    @Test
     public void testGetDevice() {
          Device device = new Device("Samsung", true, "12345", true, true,"t");
         ReportDevice reportDevice = new ReportDevice(device, "2023-09-30", "Sample report description", "Sample Report", "PDF");
         assertEquals(device, reportDevice.getDevice());
     }
 
+    /**
+     * Test set device.
+     */
     @Test
     public void testSetDevice() {
         Device device = new Device("Samsung", true, "12345", true, true,"t");
@@ -32,6 +39,9 @@ public class ReportDeviceTest {
         assertEquals(newDevice, reportDevice.getDevice());
     }
 
+    /**
+     * Test to string.
+     */
     @Test
     public void testToString() {
         Device device = new Device("Samsung", true, "12345", true, true,"t");

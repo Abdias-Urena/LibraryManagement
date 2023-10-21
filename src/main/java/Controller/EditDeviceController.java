@@ -20,6 +20,9 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The type Edit device controller.
+ */
 public class EditDeviceController implements Initializable {
 
     @FXML
@@ -39,19 +42,38 @@ public class EditDeviceController implements Initializable {
     private Label labelID;
     @FXML
     private Label labelBrand;
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
 
     private Device listDevice;
 
     private List<String> checkedItems;
+    /**
+     * The Noti.
+     */
     Notification noti = new Notification();
 
+    /**
+     * Edit device.
+     *
+     * @param event the event
+     */
     @FXML
     void editDevice(ActionEvent event) {
         QueryEditDevice();
     }
 
+    /**
+     * Edit device query device.
+     *
+     * @return the device
+     */
     public Device editDeviceQuery() {
         String id = textID.getText();
         String brand = textMarca.getText();
@@ -72,6 +94,9 @@ public class EditDeviceController implements Initializable {
     }
 
 
+    /**
+     * Query edit device.
+     */
     void QueryEditDevice() {
         Device device = editDeviceQuery();
         if (device != null) {
@@ -102,6 +127,11 @@ public class EditDeviceController implements Initializable {
         }
     }
 
+    /**
+     * Init data.
+     *
+     * @param deviceList the device list
+     */
     void initData(Device deviceList) {
         listDevice = deviceList;
         textMarca.setText(listDevice.getBrand());

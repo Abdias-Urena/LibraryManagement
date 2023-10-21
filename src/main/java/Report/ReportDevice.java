@@ -7,6 +7,9 @@ package Report;
  */
 import Device.Device;
 
+/**
+ * The type Report device.
+ */
 public class ReportDevice extends Report {
 
     private Device device;
@@ -30,11 +33,11 @@ public class ReportDevice extends Report {
      * Constructor parametrizado para la clase `ReportDevice` que también recibe
      * información de la clase base `Report`.
      *
-     * @param device El dispositivo asociado al informe.
-     * @param dateReport La fecha del informe.
+     * @param device      El dispositivo asociado al informe.
+     * @param dateReport  La fecha del informe.
      * @param description La descripción del informe.
-     * @param title El título del informe.
-     * @param typeReport El tipo de informe.
+     * @param title       El título del informe.
+     * @param typeReport  El tipo de informe.
      */
     public ReportDevice(Device device, String dateReport, String description, String title, String typeReport) {
         super(dateReport, description, title, typeReport);

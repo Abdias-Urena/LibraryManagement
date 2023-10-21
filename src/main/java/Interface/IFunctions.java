@@ -12,6 +12,7 @@ public interface IFunctions {
     /**
      * Obtiene la cantidad de días.
      *
+     * @param id the id
      * @return La cantidad de días.
      */
     public Date getDays(Ticket id);

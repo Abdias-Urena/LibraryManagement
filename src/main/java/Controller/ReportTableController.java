@@ -33,6 +33,9 @@ import java.util.ResourceBundle;
 
 import Report.*;
 
+/**
+ * The type Report table controller.
+ */
 public class ReportTableController implements Initializable {
 
     @FXML
@@ -72,18 +75,35 @@ public class ReportTableController implements Initializable {
 
     private ReportsController reportsController;
 
+    /**
+     * The Report.
+     */
     ObservableList<ReportBook> report = FXCollections.observableArrayList();
 
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UpdateTable();
     }
+
+    /**
+     * Borrar reporte.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarReporte(ActionEvent event) {
 
     }
 
+    /**
+     * Buscar reporte.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarReporte(KeyEvent event) {
         String search = textBuscar.getText();
@@ -91,16 +111,32 @@ public class ReportTableController implements Initializable {
 
     }
 
+    /**
+     * Editar reporte.
+     *
+     * @param event the event
+     */
     @FXML
     void editarReporte(ActionEvent event) {
 
     }
 
+    /**
+     * Listar reporte.
+     *
+     * @param event the event
+     */
     @FXML
     void listarReporte(ActionEvent event) {
         UpdateTable();
     }
 
+    /**
+     * Nuevo reporte.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevoReporte(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));
@@ -127,6 +163,11 @@ public class ReportTableController implements Initializable {
         stageReport.showAndWait();
     }
 
+    /**
+     * Gets report list.
+     *
+     * @return the report list
+     */
     public ObservableList<ReportBook> getReportList() {
         ObservableList<ReportBook> list_report = FXCollections.observableArrayList();
         try {
@@ -139,6 +180,13 @@ public class ReportTableController implements Initializable {
         }
         return list_report;
     }
+
+    /**
+     * Return students.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnStudents(ObservableList<ReportBook> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -151,6 +199,10 @@ public class ReportTableController implements Initializable {
             System.out.println(s.getErrorCode());
         }
     }
+
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colTitulo.setCellValueFactory(new PropertyValueFactory<>("dateReport"));
         colDiaReporte.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -159,6 +211,12 @@ public class ReportTableController implements Initializable {
         report = getReportList();
         tablaReportes.setItems(report);
     }
+
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id) {
         colTitulo.setCellValueFactory(new PropertyValueFactory<>("dateReport"));
         colDiaReporte.setCellValueFactory(new PropertyValueFactory<>("description"));

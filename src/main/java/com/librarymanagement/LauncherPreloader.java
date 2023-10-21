@@ -10,11 +10,17 @@ import javafx.stage.StageStyle;
 
 import java.util.Objects;
 
+/**
+ * The type Launcher preloader.
+ */
 public class LauncherPreloader extends Preloader {
 
     private Stage preloaderStage;
     private Scene scene;
 
+    /**
+     * Instantiates a new Launcher preloader.
+     */
     public LauncherPreloader() {
     }
 

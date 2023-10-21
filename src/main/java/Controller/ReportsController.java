@@ -34,6 +34,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sun.dc.pr.PRError;
 
+/**
+ * The type Reports controller.
+ */
 public class ReportsController implements Initializable {
 
     @FXML
@@ -132,10 +135,25 @@ public class ReportsController implements Initializable {
     @FXML
     private TableColumn<String, String> colType;
 
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
+    /**
+     * The Loans.
+     */
     ObservableList<Loan> loans = FXCollections.observableArrayList();
+    /**
+     * The Book list.
+     */
     ObservableList<Book> BookList = FXCollections.observableArrayList();
+    /**
+     * The Device list.
+     */
     ObservableList<Device> DeviceList = FXCollections.observableArrayList();
+    /**
+     * The Noti.
+     */
     Notification noti = new Notification();
 
 
@@ -147,11 +165,19 @@ public class ReportsController implements Initializable {
         UpdateTableDevice();
 
     }
+
+    /**
+     * Fill combo box.
+     */
     public void fillComboBox(){
         ObservableList<String> list_type = FXCollections.observableArrayList("Usuarios con ticket","Prestamos",
                 "Libros","Dispositivos");
         cmbReportes.setItems(list_type);
     }
+
+    /**
+     * Update table loan.
+     */
     public void UpdateTableLoan() {
         colLibroPrestamoLoan.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFechaPrestamoLoan.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
@@ -160,6 +186,12 @@ public class ReportsController implements Initializable {
         loans = getLoanList();
         tablaPrestamoLoan.setItems(loans);
     }
+
+    /**
+     * Gets loan list.
+     *
+     * @return the loan list
+     */
     public ObservableList<Loan> getLoanList() {
         ObservableList<Loan> list_loan = FXCollections.observableArrayList();
         try {
@@ -180,6 +212,13 @@ public class ReportsController implements Initializable {
         }
         return list_loan;
     }
+
+    /**
+     * Return loans.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnLoans(ObservableList<Loan> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -199,6 +238,11 @@ public class ReportsController implements Initializable {
         }
     }
 
+    /**
+     * Gets books list.
+     *
+     * @return the books list
+     */
     public ObservableList<Book> getBooksList() {
         ObservableList<Book> bookList = FXCollections.observableArrayList();
 
@@ -236,6 +280,9 @@ public class ReportsController implements Initializable {
     }
 
 
+    /**
+     * Update table book.
+     */
     public void UpdateTableBook() {
         colAutor.setCellValueFactory(new PropertyValueFactory<>("author"));
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -254,6 +301,11 @@ public class ReportsController implements Initializable {
         tablaLibros.setItems(BookList);
     }
 
+    /**
+     * Gets device list.
+     *
+     * @return the device list
+     */
     public ObservableList<Device> getDeviceList() {
         ObservableList<Device> DeviceList = FXCollections.observableArrayList();
         try {
@@ -274,6 +326,9 @@ public class ReportsController implements Initializable {
         return DeviceList;
     }
 
+    /**
+     * Update table device.
+     */
     public void UpdateTableDevice() {
         colMarca.setCellValueFactory(new PropertyValueFactory<>("brand"));
         colDisponibilidad.setCellValueFactory(celldata -> {
@@ -293,6 +348,11 @@ public class ReportsController implements Initializable {
     }
 
 
+    /**
+     * Guardar.
+     *
+     * @param event the event
+     */
     @FXML
     void guardar(ActionEvent event) {
         try {
@@ -315,6 +375,11 @@ public class ReportsController implements Initializable {
         }
     }
 
+    /**
+     * Searh type.
+     *
+     * @param event the event
+     */
     @FXML
     void searhType(ActionEvent event) {
         switch (cmbReportes.getValue()){

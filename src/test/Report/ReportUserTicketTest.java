@@ -9,11 +9,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Report user ticket test.
  *
  * @author Abdias
  */
 public class ReportUserTicketTest {
-    
+
+    /**
+     * Test get user.
+     */
     @Test
     public void testGetUser() {
         User user = new User("12345", "John", "Doe", "johndoe@example.com", "123-456-7890", "123 Main St");
@@ -21,6 +25,9 @@ public class ReportUserTicketTest {
         assertEquals(user, reportUserTicket.getUser());
     }
 
+    /**
+     * Test set user.
+     */
     @Test
     public void testSetUser() {
         User user = new User("12345", "John", "Doe", "johndoe@example.com", "123-456-7890", "123 Main St");
@@ -32,6 +39,9 @@ public class ReportUserTicketTest {
         assertEquals(newUser, reportUserTicket.getUser());
     }
 
+    /**
+     * Test to string.
+     */
     @Test
     public void testToString() {
         User user = new User("12345", "John", "Doe", "johndoe@example.com", "123-456-7890", "123 Main St");

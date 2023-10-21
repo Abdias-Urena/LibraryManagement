@@ -25,10 +25,10 @@ public abstract class Report {
     /**
      * Constructor parametrizado para la clase abstracta `Report`.
      *
-     * @param dateReport La fecha del informe.
+     * @param dateReport  La fecha del informe.
      * @param description La descripción del informe.
-     * @param title El título del informe.
-     * @param typeReport El tipo de informe.
+     * @param title       El título del informe.
+     * @param typeReport  El tipo de informe.
      */
     public Report(String dateReport, String description, String title, String typeReport) {
         this.dateReport = dateReport;

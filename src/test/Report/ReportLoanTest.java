@@ -10,11 +10,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Report loan test.
  *
  * @author Abdias
  */
 public class ReportLoanTest {
-    
+
+    /**
+     * Test get loan.
+     */
     @Test
     public void testGetLoan() {
         
@@ -26,6 +30,9 @@ public class ReportLoanTest {
         assertEquals(loan, reportLoan.getLoan());
     }
 
+    /**
+     * Test set loan.
+     */
     @Test
     public void testSetLoan() {
         User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
@@ -40,6 +47,9 @@ public class ReportLoanTest {
         assertEquals(newLoan, reportLoan.getLoan());
     }
 
+    /**
+     * Test to string.
+     */
     @Test
     public void testToString() {
         User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");

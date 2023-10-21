@@ -10,6 +10,9 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The type Init preloader.
+ */
 public class InitPreloader implements Initializable {
 
     @FXML
@@ -20,9 +23,18 @@ public class InitPreloader implements Initializable {
     
     @FXML
     private ProgressBar progressBar;
-    
+
+    /**
+     * The constant statprogressBar.
+     */
     public static ProgressBar statprogressBar;
+    /**
+     * The Lbl loading.
+     */
     public Label lblLoading;
+    /**
+     * The constant lblLoadingg.
+     */
     public static Label lblLoadingg;
     
     @Override

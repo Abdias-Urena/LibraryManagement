@@ -7,6 +7,9 @@ package Report;
  */
 import Person.User;
 
+/**
+ * The type Report user ticket.
+ */
 public class ReportUserTicket extends Report {
 
     private User user;
@@ -14,11 +17,11 @@ public class ReportUserTicket extends Report {
     /**
      * Constructor parametrizado para la clase `ReportUserTicket`.
      *
-     * @param user El usuario asociado al informe.
-     * @param dateReport La fecha del informe.
+     * @param user        El usuario asociado al informe.
+     * @param dateReport  La fecha del informe.
      * @param description La descripción del informe.
-     * @param title El título del informe.
-     * @param typeReport El tipo de informe.
+     * @param title       El título del informe.
+     * @param typeReport  El tipo de informe.
      */
     public ReportUserTicket(User user, String dateReport, String description, String title, String typeReport) {
         super(dateReport, description, title, typeReport);

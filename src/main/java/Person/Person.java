@@ -22,10 +22,9 @@ public class Person {
     /**
      * Constructor parametrizado para la clase `Person`.
      *
-     * @param id El ID único de la persona.
+     * @param id       El ID único de la persona.
      * @param lastname El apellido de la persona.
-     * @param name El nombre de la persona.
-     *
+     * @param name     El nombre de la persona.
      */
     public Person(String id, String lastname, String name) {
         this.id = id;

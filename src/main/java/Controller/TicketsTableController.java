@@ -35,6 +35,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The type Tickets table controller.
+ */
 public class TicketsTableController implements Initializable {
 
     @FXML
@@ -72,11 +75,25 @@ public class TicketsTableController implements Initializable {
 
     private TicketsController ticketsController;
 
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
 
+    /**
+     * The Tickets.
+     */
     ObservableList<Ticket> tickets = FXCollections.observableArrayList();
 
+    /**
+     * Borrar multa.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarMulta(ActionEvent event) {
         Ticket libroSeleccionado = tablaMulta.getSelectionModel().getSelectedItem();
@@ -99,6 +116,11 @@ public class TicketsTableController implements Initializable {
         }
     }
 
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id){
         colUsuario.setCellValueFactory(new PropertyValueFactory<>("ticket"));
         colDescripcion.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -111,17 +133,32 @@ public class TicketsTableController implements Initializable {
         tablaMulta.setItems(filteredTickets);
     }
 
+    /**
+     * Buscar multa.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarMulta(KeyEvent event) {
         UpdateTable(textBuscar.getText());
     }
 
+    /**
+     * Listar multa.
+     *
+     * @param event the event
+     */
     @FXML
     void listarMulta(ActionEvent event) {
         UpdateTable();
     }
 
 
+    /**
+     * Gets ticket list.
+     *
+     * @return the ticket list
+     */
     public ObservableList<Ticket> getTicketList() {
         ObservableList<Ticket> ticketList = FXCollections.observableArrayList();
         try {
@@ -150,6 +187,12 @@ public class TicketsTableController implements Initializable {
         tablaMulta.setItems(tickets);
     }
 
+    /**
+     * Nueva multa.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevaMulta(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));

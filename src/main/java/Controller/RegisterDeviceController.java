@@ -49,9 +49,18 @@ public class RegisterDeviceController implements Initializable {
     @FXML
     private Label labelBrand;
 
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
     private List<String> checkedItems;
+    /**
+     * The Notification.
+     */
     Notification notification = new Notification();
 
     /**
@@ -70,6 +79,11 @@ public class RegisterDeviceController implements Initializable {
         QuerySaveData();
     }
 
+    /**
+     * Register device device.
+     *
+     * @return the device
+     */
     public Device registerDevice() {
         String id = textID.getText();
         String brand = textMarca.getText();

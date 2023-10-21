@@ -35,6 +35,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The type Loan books table controller.
+ */
 public class LoanBooksTableController implements Initializable {
 
     @FXML
@@ -73,12 +76,21 @@ public class LoanBooksTableController implements Initializable {
     private Stage stageLoanBookTable;
 
     private LoanBooksController loanBooksController;
+    /**
+     * The Loans.
+     */
     ObservableList<Loan> loans = FXCollections.observableArrayList();
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
     public void initialize(URL location, ResourceBundle resources) {
         UpdateTable();
     }
 
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colLibroPrestamo.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFechaPrestamo.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
@@ -87,6 +99,12 @@ public class LoanBooksTableController implements Initializable {
         loans = getLoanList();
         tablaPrestamoLibro.setItems(loans);
     }
+
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id){
         colLibroPrestamo.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFechaPrestamo.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
@@ -98,6 +116,12 @@ public class LoanBooksTableController implements Initializable {
         );
         tablaPrestamoLibro.setItems(filteredStudents);
     }
+
+    /**
+     * Gets loan list.
+     *
+     * @return the loan list
+     */
     public ObservableList<Loan> getLoanList() {
         ObservableList<Loan> list_loan = FXCollections.observableArrayList();
         try {
@@ -111,6 +135,13 @@ public class LoanBooksTableController implements Initializable {
         }
         return list_loan;
     }
+
+    /**
+     * Return loans.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnLoans(ObservableList<Loan> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -126,6 +157,12 @@ public class LoanBooksTableController implements Initializable {
             System.out.println(s.getErrorCode());
         }
     }
+
+    /**
+     * Borrar prestamo libro.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarPrestamoLibro(ActionEvent event) {
         Loan loan = tablaPrestamoLibro.getSelectionModel().getSelectedItem();
@@ -152,6 +189,11 @@ public class LoanBooksTableController implements Initializable {
         }
     }
 
+    /**
+     * Buscar prestamo libros.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarPrestamoLibros(KeyEvent event) {
         String searchBook = textBuscar.getText();
@@ -159,12 +201,22 @@ public class LoanBooksTableController implements Initializable {
     }
 
 
-
+    /**
+     * Listar prestamo libro.
+     *
+     * @param event the event
+     */
     @FXML
     void listarPrestamoLibro(ActionEvent event) {
         UpdateTable();
     }
 
+    /**
+     * Nuevo prestamo libro.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevoPrestamoLibro(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));

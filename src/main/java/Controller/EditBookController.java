@@ -20,6 +20,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * The type Edit book controller.
+ */
 public class EditBookController implements Initializable {
 
     @FXML
@@ -54,8 +57,17 @@ public class EditBookController implements Initializable {
 
     private Book libroSeleccionado;
 
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
+    /**
+     * The Noti.
+     */
     Notification noti = new Notification();
 
     @Override
@@ -64,6 +76,11 @@ public class EditBookController implements Initializable {
         textURL.setVisible(false);
     }
 
+    /**
+     * Init data.
+     *
+     * @param list the list
+     */
     void initData(Book list) {
         libroSeleccionado = list;  // Inicializa la variable libroSeleccionado con el libro pasado como argumento
         textAutor.setText(libroSeleccionado.getAuthor());
@@ -84,6 +101,11 @@ public class EditBookController implements Initializable {
         }
     }
 
+    /**
+     * Choose book.
+     *
+     * @param event the event
+     */
     @FXML
     void chooseBook(ActionEvent event) {
         if (comboBoxTipoLibro.getValue().equals("Digital")) {
@@ -94,11 +116,20 @@ public class EditBookController implements Initializable {
             textURL.setVisible(false);
         }
     }
+
+    /**
+     * Editar book.
+     *
+     * @param event the event
+     */
     @FXML
     void editarBook(ActionEvent event){
         QueryEdit();
     }
 
+    /**
+     * Query edit.
+     */
     void QueryEdit() {
         if (comboBoxTipoLibro.getValue().equals("Digital")) {
             libroSeleccionado = new DigitalBook(textURL.getText(), textAutor.getText(), textCategory.getText(), fechaPicker.getValue().toString(),

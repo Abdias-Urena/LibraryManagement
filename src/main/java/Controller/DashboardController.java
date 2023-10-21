@@ -19,6 +19,9 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The type Dashboard controller.
+ */
 public class DashboardController implements Initializable {
 
     @FXML
@@ -76,6 +79,12 @@ public class DashboardController implements Initializable {
 
     }
 
+    /**
+     * Abrir libros.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void abrirLibros(ActionEvent event) throws IOException {
         if (tabLibros == null) {
@@ -95,6 +104,12 @@ public class DashboardController implements Initializable {
         tabPane.getSelectionModel().select(tabLibros);
     }
 
+    /**
+     * Abrir equipos.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void abrirEquipos(ActionEvent event) throws IOException {
         if (tabEquipos == null) {
@@ -114,6 +129,12 @@ public class DashboardController implements Initializable {
         tabPane.getSelectionModel().select(tabEquipos);
     }
 
+    /**
+     * Abrir prestamos equipos.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void abrirPrestamosEquipos(ActionEvent event) throws IOException {
         if (tabLoanDevices == null) {
@@ -133,6 +154,12 @@ public class DashboardController implements Initializable {
         tabPane.getSelectionModel().select(tabLoanDevices);
     }
 
+    /**
+     * Abrir prestamos libros.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void abrirPrestamosLibros(ActionEvent event) throws IOException {
         if (tabLoanLibros == null) {
@@ -152,6 +179,12 @@ public class DashboardController implements Initializable {
         tabPane.getSelectionModel().select(tabLoanLibros);
     }
 
+    /**
+     * Abrir profesores.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void abrirProfesores(ActionEvent event) throws IOException {
         if (tabTeachers == null) {
@@ -171,6 +204,12 @@ public class DashboardController implements Initializable {
         tabPane.getSelectionModel().select(tabTeachers);
     }
 
+    /**
+     * Abrir usuarios.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void abrirUsuarios(ActionEvent event) throws IOException {
         if (tabUsers == null) {
@@ -190,6 +229,12 @@ public class DashboardController implements Initializable {
         tabPane.getSelectionModel().select(tabUsers);
     }
 
+    /**
+     * Mostrar reportes.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void mostrarReportes(ActionEvent event) throws IOException {
         if (tabReports == null) {
@@ -209,6 +254,12 @@ public class DashboardController implements Initializable {
         tabPane.getSelectionModel().select(tabReports);
     }
 
+    /**
+     * Mostrar tablas tickets.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void mostrarTablasTickets(ActionEvent event) throws IOException {
         if (tabTickets == null) {

@@ -6,6 +6,9 @@ package Report;
  */
 import Book.Book;
 
+/**
+ * The type Report book.
+ */
 public class ReportBook extends Report {
 
     private Book book;
@@ -29,11 +32,11 @@ public class ReportBook extends Report {
      * Constructor parametrizado para la clase `ReportBook` que también recibe
      * información de la clase base `Report`.
      *
-     * @param book El libro asociado al informe.
-     * @param dateReport La fecha del informe.
+     * @param book        El libro asociado al informe.
+     * @param dateReport  La fecha del informe.
      * @param description La descripción del informe.
-     * @param title El título del informe.
-     * @param typeReport El tipo de informe.
+     * @param title       El título del informe.
+     * @param typeReport  El tipo de informe.
      */
     public ReportBook(Book book, String dateReport, String description, String title, String typeReport) {
         super(dateReport, description, title, typeReport);

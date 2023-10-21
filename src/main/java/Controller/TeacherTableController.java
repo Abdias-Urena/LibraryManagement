@@ -32,6 +32,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The type Teacher table controller.
+ */
 public class TeacherTableController implements Initializable {
 
     @FXML
@@ -76,14 +79,26 @@ public class TeacherTableController implements Initializable {
     private Stage stageProfesor;
 
     private RegisterTeachersController registerTeachersController;
+    /**
+     * The Teachers.
+     */
     ObservableList<Teacher> teachers = FXCollections.observableArrayList();
 
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         UpdateTable();
     }
+
+    /**
+     * Gets teachers list.
+     *
+     * @return the teachers list
+     */
     public ObservableList<Teacher> getTeachersList() {
         ObservableList<Teacher> list_teachers = FXCollections.observableArrayList();
         try {
@@ -95,6 +110,13 @@ public class TeacherTableController implements Initializable {
         }
         return list_teachers;
     }
+
+    /**
+     * Return students.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnStudents(ObservableList<Teacher> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -110,6 +132,10 @@ public class TeacherTableController implements Initializable {
             System.out.println(s.getErrorCode());
         }
     }
+
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -121,6 +147,11 @@ public class TeacherTableController implements Initializable {
         tablaProfesor.setItems(teachers);
     }
 
+    /**
+     * Update table.
+     *
+     * @param search the search
+     */
     public void UpdateTable(String search) {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -136,27 +167,54 @@ public class TeacherTableController implements Initializable {
         );
         tablaProfesor.setItems(filteredTeachers);
     }
+
+    /**
+     * Borrar profesor.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarProfesor(ActionEvent event) {
 
     }
 
+    /**
+     * Buscar profesor.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarProfesor(KeyEvent event) {
         String search = textBuscar.getText();
         UpdateTable(search);
     }
 
+    /**
+     * Editar profesor.
+     *
+     * @param event the event
+     */
     @FXML
     void editarProfesor(ActionEvent event) {
 
     }
 
+    /**
+     * Listar profesor.
+     *
+     * @param event the event
+     */
     @FXML
     void listarProfesor(ActionEvent event) {
         UpdateTable();
     }
 
+    /**
+     * Nuevo profesor.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevoProfesor(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));

@@ -37,6 +37,9 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The type Device controller.
+ */
 public class DeviceController implements Initializable {
 
     @FXML
@@ -80,16 +83,35 @@ public class DeviceController implements Initializable {
 
     private RegisterDeviceController registerDeviceController;
 
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
+    /**
+     * The Device list.
+     */
     ObservableList<Device> DeviceList = FXCollections.observableArrayList();
 
 
+    /**
+     * Buscar equipo.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarEquipo(KeyEvent event) {
         UpdateTable(textBuscar.getText());
     }
 
+    /**
+     * Editar equipo.
+     *
+     * @param event the event
+     */
     @FXML
     void editarEquipo(ActionEvent event) {
         // Obtener el libro seleccionado de la tabla
@@ -117,11 +139,21 @@ public class DeviceController implements Initializable {
         }
     }
 
+    /**
+     * Listar equipos.
+     *
+     * @param event the event
+     */
     @FXML
     void listarEquipos(ActionEvent event) {
         UpdateTable();
     }
 
+    /**
+     * Gets device list.
+     *
+     * @return the device list
+     */
     public ObservableList<Device> getDeviceList() {
         ObservableList<Device> DeviceList = FXCollections.observableArrayList();
         try {
@@ -142,6 +174,11 @@ public class DeviceController implements Initializable {
         return DeviceList;
     }
 
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id) {
         colMarca.setCellValueFactory(new PropertyValueFactory<>("brand"));
         colDisponibilidad.setCellValueFactory(cellData -> {
@@ -167,6 +204,9 @@ public class DeviceController implements Initializable {
     }
 
 
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colMarca.setCellValueFactory(new PropertyValueFactory<>("brand"));
         colDisponibilidad.setCellValueFactory(cellData -> {
@@ -189,6 +229,12 @@ public class DeviceController implements Initializable {
         tablaEquipos.setItems(DeviceList);
     }
 
+    /**
+     * Nuevo equipo.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevoEquipo(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));
@@ -215,6 +261,11 @@ public class DeviceController implements Initializable {
         stageEquipos.showAndWait();
     }
 
+    /**
+     * Borrar equipo.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarEquipo(ActionEvent event) {
         Device DeviceSelect = tablaEquipos.getSelectionModel().getSelectedItem();

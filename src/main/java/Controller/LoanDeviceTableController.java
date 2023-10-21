@@ -38,6 +38,9 @@ import java.util.ResourceBundle;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 
+/**
+ * The type Loan device table controller.
+ */
 public class LoanDeviceTableController implements Initializable {
 
     @FXML
@@ -76,11 +79,21 @@ public class LoanDeviceTableController implements Initializable {
     private Stage stageLoanDeviceTable;
 
     private LoanDevicesController loanDevicesController;
+    /**
+     * The Loans.
+     */
     ObservableList<Loan> loans = FXCollections.observableArrayList();
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
     public void initialize(URL location, ResourceBundle resources) {
         UpdateTable();
     }
+
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colDispos.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFechaPrestamo.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
@@ -89,6 +102,12 @@ public class LoanDeviceTableController implements Initializable {
         loans = getLoanList();
         tablaPrestamoEquipo.setItems(loans);
     }
+
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id){
         colDispos.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFechaPrestamo.setCellValueFactory(new PropertyValueFactory<>("loanDate"));
@@ -102,6 +121,12 @@ public class LoanDeviceTableController implements Initializable {
         );
         tablaPrestamoEquipo.setItems(filteredStudents);
     }
+
+    /**
+     * Gets loan list.
+     *
+     * @return the loan list
+     */
     public ObservableList<Loan> getLoanList() {
         ObservableList<Loan> list_loan = FXCollections.observableArrayList();
         try {
@@ -115,6 +140,13 @@ public class LoanDeviceTableController implements Initializable {
         }
         return list_loan;
     }
+
+    /**
+     * Return loans.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnLoans(ObservableList<Loan> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -132,6 +164,12 @@ public class LoanDeviceTableController implements Initializable {
             System.out.println(s.getErrorCode());
         }
     }
+
+    /**
+     * Borrar prestamo equipo.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarPrestamoEquipo(ActionEvent event) {
         Loan loan = tablaPrestamoEquipo.getSelectionModel().getSelectedItem();
@@ -186,22 +224,43 @@ public class LoanDeviceTableController implements Initializable {
         return false;
     }
 
+    /**
+     * Buscar prestamo equipos.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarPrestamoEquipos(KeyEvent event) {
         String search = textBuscar.getText();
         UpdateTable(search);
     }
 
+    /**
+     * Editar prestamo equipo.
+     *
+     * @param event the event
+     */
     @FXML
     void editarPrestamoEquipo(ActionEvent event) {
 
     }
 
+    /**
+     * Listar prestamo equipos.
+     *
+     * @param event the event
+     */
     @FXML
     void listarPrestamoEquipos(ActionEvent event) {
         UpdateTable();
     }
 
+    /**
+     * Nuevo prestamo equipo.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevoPrestamoEquipo(ActionEvent event) throws IOException {
         root.setEffect(new GaussianBlur(10.0));

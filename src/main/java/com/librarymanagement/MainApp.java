@@ -11,6 +11,9 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
+/**
+ * The type Main app.
+ */
 public class MainApp extends Application {
 
     private static final int COUNT_LIMIT = 1;
@@ -54,6 +57,11 @@ public class MainApp extends Application {
         }
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         LauncherImpl.launchApplication(MainApp.class, LauncherPreloader.class, args);
 

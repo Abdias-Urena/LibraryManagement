@@ -26,7 +26,13 @@ public class Ticket implements IFunctions {
 
     private String ticket;
 
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
 
     /**
@@ -48,6 +54,12 @@ public class Ticket implements IFunctions {
         this.ticket = ticket;
     }
 
+    /**
+     * Instantiates a new Ticket.
+     *
+     * @param description the description
+     * @param priceTicket the price ticket
+     */
     public Ticket(String description, int priceTicket) {
         this.description = description;
         this.priceTicket = priceTicket;
@@ -134,6 +146,12 @@ public class Ticket implements IFunctions {
     }
 
 
+    /**
+     * Calculate price int.
+     *
+     * @param days the days
+     * @return the int
+     */
     public int calculatePrice(LocalDate days) {
         LocalDate fechaActual = LocalDate.now();
         long daysDifference = ChronoUnit.DAYS.between(days,fechaActual);

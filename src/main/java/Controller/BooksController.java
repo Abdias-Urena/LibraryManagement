@@ -37,6 +37,9 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/**
+ * The type Books controller.
+ */
 public class BooksController implements Initializable {
 
     @FXML
@@ -84,9 +87,18 @@ public class BooksController implements Initializable {
 
     private RegisterBookController registerBookController;
 
+    /**
+     * The Database connection.
+     */
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    /**
+     * The Connection.
+     */
     Connection connection = databaseConnection.getConnection();
 
+    /**
+     * The Book list.
+     */
     ObservableList<Book> BookList = FXCollections.observableArrayList();
 
     @Override
@@ -94,12 +106,22 @@ public class BooksController implements Initializable {
         UpdateTable();
     }
 
+    /**
+     * Buscar libro.
+     *
+     * @param event the event
+     */
     @FXML
     void buscarLibro(KeyEvent event) {
         UpdateTable(textBuscar.getText());
     }
 
 
+    /**
+     * Gets books list.
+     *
+     * @return the books list
+     */
     public ObservableList<Book> getBooksList() {
         ObservableList<Book> bookList = FXCollections.observableArrayList();
 
@@ -136,6 +158,11 @@ public class BooksController implements Initializable {
         return bookList;
     }
 
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id) {
         colAutor.setCellValueFactory(new PropertyValueFactory<>("author"));
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -167,6 +194,9 @@ public class BooksController implements Initializable {
         tablaLibros.setItems(filteredBooks);
     }
 
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colAutor.setCellValueFactory(new PropertyValueFactory<>("author"));
         colCategoria.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -191,6 +221,12 @@ public class BooksController implements Initializable {
         tablaLibros.setItems(BookList);
     }
 
+    /**
+     * Nuevo libro.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void nuevoLibro(ActionEvent event) throws IOException {
 
@@ -218,11 +254,22 @@ public class BooksController implements Initializable {
         stageLibros.showAndWait();
     }
 
+    /**
+     * Listar equipos.
+     *
+     * @param event the event
+     */
     @FXML
     void listarEquipos(ActionEvent event) {
         UpdateTable();
     }
 
+    /**
+     * Editar libro.
+     *
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     void editarLibro(ActionEvent event) throws IOException {
         // Obtener el libro seleccionado de la tabla
@@ -251,6 +298,11 @@ public class BooksController implements Initializable {
         }
     }
 
+    /**
+     * Borrar libro.
+     *
+     * @param event the event
+     */
     @FXML
     void borrarLibro(ActionEvent event) {
         Book libroSeleccionado = tablaLibros.getSelectionModel().getSelectedItem();

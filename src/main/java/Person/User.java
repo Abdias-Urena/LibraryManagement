@@ -22,8 +22,8 @@ public class User extends Person {
     /**
      * Constructor parametrizado para la clase `User`.
      *
-     * @param address La dirección del usuario.
-     * @param email El correo electrónico del usuario.
+     * @param address     La dirección del usuario.
+     * @param email       El correo electrónico del usuario.
      * @param phoneNumber El número de teléfono del usuario.
      */
     public User(String address, String email, String phoneNumber) {
@@ -36,12 +36,12 @@ public class User extends Person {
      * Constructor parametrizado para la clase `User` que también recibe
      * información de la clase base `Person`.
      *
-     * @param address La dirección del usuario.
-     * @param email El correo electrónico del usuario.
+     * @param address     La dirección del usuario.
+     * @param email       El correo electrónico del usuario.
      * @param phoneNumber El número de teléfono del usuario.
-     * @param id El ID único de la persona.
-     * @param lastname El apellido de la persona.
-     * @param name El nombre de la persona.
+     * @param id          El ID único de la persona.
+     * @param lastname    El apellido de la persona.
+     * @param name        El nombre de la persona.
      */
     public User(String address, String email, String phoneNumber, String id, String lastname, String name) {
         super(id, lastname, name);

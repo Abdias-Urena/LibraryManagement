@@ -9,12 +9,16 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Fisic book test.
  *
  * @author Abdias
  */
 public class FisicBookTest {
-    
-     @Test
+
+    /**
+     * Test fisic book with availability and usability constructor and getters.
+     */
+    @Test
     public void testFisicBookWithAvailabilityAndUsabilityConstructorAndGetters() {
         FisicBook fisicBook = new FisicBook(true, true);
 
@@ -22,6 +26,9 @@ public class FisicBookTest {
         assertTrue(fisicBook.isIsUsable());
     }
 
+    /**
+     * Test fisic book full constructor and getters.
+     */
     @Test
     public void testFisicBookFullConstructorAndGetters() {
         FisicBook fisicBook = new FisicBook(
@@ -45,6 +52,9 @@ public class FisicBookTest {
         assertFalse(fisicBook.isIsUsable());
     }
 
+    /**
+     * Test fisic book availability and usability setters.
+     */
     @Test
     public void testFisicBookAvailabilityAndUsabilitySetters() {
         FisicBook fisicBook = new FisicBook(true, true);
@@ -56,6 +66,9 @@ public class FisicBookTest {
         assertTrue(fisicBook.isIsUsable());
     }
 
+    /**
+     * Test fisic book to string.
+     */
     @Test
     public void testFisicBookToString() {
         FisicBook fisicBook = new FisicBook(true, true);

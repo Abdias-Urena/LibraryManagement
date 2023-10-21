@@ -26,6 +26,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.scene.input.KeyEvent;
 
+/**
+ * The type Loan devices controller.
+ */
 public class LoanDevicesController implements Initializable {
 
     @FXML
@@ -65,9 +68,18 @@ public class LoanDevicesController implements Initializable {
 
     @FXML
     private TableColumn<User, ?> colTelefono;
+    /**
+     * The Students.
+     */
     ObservableList<User> students = FXCollections.observableArrayList();
+    /**
+     * The List combox.
+     */
     ObservableList<Device> list_combox = FXCollections.observableArrayList();
 
+    /**
+     * The Connection.
+     */
     DatabaseConnection connection = DatabaseConnection.getInstance();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,11 +87,20 @@ public class LoanDevicesController implements Initializable {
         fillComboBox();
         list_combox= getDeviceList();
     }
+
+    /**
+     * Fill combo box.
+     */
     public void fillComboBox(){
         ObservableList<String> list_comboType = FXCollections.observableArrayList("Tablet","Laptop");
         cmbTipoDis.setItems(list_comboType);
     }
 
+    /**
+     * Guardar.
+     *
+     * @param event the event
+     */
     @FXML
     void guardar(ActionEvent event) {
         User searhStudent = students.filtered(student-> student.getId().equals(textNombre.getText())).stream().findFirst().
@@ -93,6 +114,11 @@ public class LoanDevicesController implements Initializable {
         clean();
     }
 
+    /**
+     * Gets student list.
+     *
+     * @return the student list
+     */
     public ObservableList<User> getStudentList() {
         ObservableList<User> list_students = FXCollections.observableArrayList();
         try {
@@ -104,6 +130,13 @@ public class LoanDevicesController implements Initializable {
         }
         return list_students;
     }
+
+    /**
+     * Return students.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnStudents(ObservableList<User> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -118,6 +151,10 @@ public class LoanDevicesController implements Initializable {
             System.out.println(s.getErrorCode());
         }
     }
+
+    /**
+     * Update table.
+     */
     public void UpdateTable() {
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -127,12 +164,24 @@ public class LoanDevicesController implements Initializable {
         students = getStudentList();
         tablaEstudiantes.setItems(students);
     }
+
+    /**
+     * Search.
+     *
+     * @param event the event
+     */
     @FXML
     void search(KeyEvent event) {
         String search = textNombre.getText();
         UpdateTable(search);
 
     }
+
+    /**
+     * Update table.
+     *
+     * @param id the id
+     */
     public void UpdateTable(String id){
         colNombre.setCellValueFactory(new PropertyValueFactory<>("name"));
         colApellido.setCellValueFactory(new PropertyValueFactory<>("lastname"));
@@ -147,6 +196,12 @@ public class LoanDevicesController implements Initializable {
         );
         tablaEstudiantes.setItems(filteredStudents);
     }
+
+    /**
+     * Selection type.
+     *
+     * @param event the event
+     */
     @FXML
     void selectionType(ActionEvent event) {
         switch (cmbTipoDis.getValue()){
@@ -160,6 +215,12 @@ public class LoanDevicesController implements Initializable {
                 throw new IllegalStateException("Unexpected value: " + cmbTipoDis.getValue());
         }
     }
+
+    /**
+     * Gets device list.
+     *
+     * @return the device list
+     */
     public ObservableList<Device> getDeviceList() {
         ObservableList<Device> list_students = FXCollections.observableArrayList();
         try {
@@ -171,6 +232,13 @@ public class LoanDevicesController implements Initializable {
         }
         return list_students;
     }
+
+    /**
+     * Return devices.
+     *
+     * @param list the list
+     * @param rs   the rs
+     */
     public void returnDevices(ObservableList<Device> list, ResultSet rs){
         try {
             if(!rs.next()){
@@ -192,6 +260,10 @@ public class LoanDevicesController implements Initializable {
             System.out.println(s.getErrorCode());
         }
     }
+
+    /**
+     * Clean.
+     */
     public void clean() {
         cmbTipoDis.setValue("");
         cmbDispDis.setValue(null);

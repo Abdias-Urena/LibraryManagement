@@ -23,6 +23,17 @@ public class Teacher extends User {
         this.departament = departament;
     }
 
+    /**
+     * Instantiates a new Teacher.
+     *
+     * @param address     the address
+     * @param email       the email
+     * @param phoneNumber the phone number
+     * @param id          the id
+     * @param lastname    the lastname
+     * @param name        the name
+     * @param departament the departament
+     */
     public Teacher(String address, String email, String phoneNumber, String id, String lastname, String name, String departament) {
         super(address, email, phoneNumber, id, lastname, name);
         this.departament = departament;
@@ -38,7 +49,6 @@ public class Teacher extends User {
      *
      * @return El departamento.
      */
-
     public String getDepartament() {
         return departament;
     }

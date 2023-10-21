@@ -14,7 +14,6 @@ public interface LoanDevice {
     /**
      * Realiza un préstamo de un dispositivo a un usuario.
      *
-     *
      * @param device El dispositivo que se prestará.
      * @return El dispositivo prestado.
      */

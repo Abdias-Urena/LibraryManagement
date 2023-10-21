@@ -9,11 +9,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Digital book test.
  *
  * @author Abdias
  */
 public class DigitalBookTest {
-    
+
+    /**
+     * Test digital book with url constructor and getters.
+     */
     @Test
     public void testDigitalBookWithUrlConstructorAndGetters() {
         DigitalBook digitalBook = new DigitalBook("https://example.com/book");
@@ -21,6 +25,9 @@ public class DigitalBookTest {
         assertEquals("https://example.com/book", digitalBook.getUrl());
     }
 
+    /**
+     * Test digital book full constructor and getters.
+     */
     @Test
     public void testDigitalBookFullConstructorAndGetters() {
         DigitalBook digitalBook = new DigitalBook(
@@ -41,6 +48,9 @@ public class DigitalBookTest {
         assertEquals("https://example.com/book", digitalBook.getUrl());
     }
 
+    /**
+     * Test digital book url setter.
+     */
     @Test
     public void testDigitalBookUrlSetter() {
         DigitalBook digitalBook = new DigitalBook("https://example.com/old-url");
@@ -49,6 +59,9 @@ public class DigitalBookTest {
         assertEquals("https://example.com/new-url", digitalBook.getUrl());
     }
 
+    /**
+     * Test digital book to string.
+     */
     @Test
     public void testDigitalBookToString() {
         DigitalBook digitalBook = new DigitalBook("https://example.com/book");

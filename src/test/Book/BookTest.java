@@ -9,11 +9,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
+ * The type Book test.
  *
  * @author Abdias
  */
 public class BookTest {
-    
+
+    /**
+     * Test constructor and getters.
+     */
     @Test
     public void testConstructorAndGetters() {
         Book book = new Book("John Doe", "Fiction", "2023-09-30", "Hardcover", "Sample Title","y");
@@ -25,6 +29,9 @@ public class BookTest {
         assertEquals("Sample Title", book.getTitle());
     }
 
+    /**
+     * Test setters.
+     */
     @Test
     public void testSetters() {
         Book book = new Book();
@@ -42,6 +49,9 @@ public class BookTest {
         assertEquals("New Book Title", book.getTitle());
     }
 
+    /**
+     * Test to string.
+     */
     @Test
     public void testToString() {
         Book book = new Book("Alice Johnson", "Mystery", "2023-10-05", "E-book", "Mystery Novel","y");

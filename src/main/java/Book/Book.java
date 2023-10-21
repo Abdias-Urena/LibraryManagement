@@ -28,11 +28,12 @@ public class Book {
      * Constructor que inicializa una instancia de la clase `Book` con los
      * valores proporcionados.
      *
-     * @param author Autor del libro.
-     * @param category La categoría del libro.
+     * @param author          Autor del libro.
+     * @param category        La categoría del libro.
      * @param publicationDate La fecha de publicación del libro.
-     * @param reproduction La información sobre la reproducción del libro.
-     * @param title El título del libro.
+     * @param reproduction    La información sobre la reproducción del libro.
+     * @param title           El título del libro.
+     * @param type            the type
      */
     public Book(String author, String category, String publicationDate, String reproduction, String title, String type) {
         this.author = author;
@@ -136,12 +137,18 @@ public class Book {
     /**
      * Establece el tipo del libro.
      *
-     * @param  'rtto ' El nuevo tipoo del libro.
+     * @param 'El nuevo tipo del libro'.
+     * @return the type
      */
     public String getType() {
         return type;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
     public void setType(String type) {
         this.type = type;
     }

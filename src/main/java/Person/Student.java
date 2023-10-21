@@ -21,13 +21,25 @@ public class Student extends User {
      * Constructor parametrizado para la clase `Student`.
      *
      * @param career La carrera que sigue el estudiante.
-     * @param grant Indica si el estudiante tiene una beca.
+     * @param grant  Indica si el estudiante tiene una beca.
      */
     public Student(String career, boolean grant) {
         this.career = career;
         this.grant = grant;
     }
 
+    /**
+     * Instantiates a new Student.
+     *
+     * @param address     the address
+     * @param email       the email
+     * @param phoneNumber the phone number
+     * @param id          the id
+     * @param lastname    the lastname
+     * @param name        the name
+     * @param career      the career
+     * @param grant       the grant
+     */
     public Student(String address, String email, String phoneNumber, String id, String lastname, String name, String career, boolean grant) {
         super(address, email, phoneNumber, id, lastname, name);
         this.career = career;
@@ -61,8 +73,7 @@ public class Student extends User {
     /**
      * Verifica si el estudiante tiene una beca.
      *
-     * @return `true` si el estudiante tiene una beca, `false` en caso
-     * contrario.
+     * @return `true` si el estudiante tiene una beca, `false` en caso contrario.
      */
     public boolean isGrant() {
         return grant;
@@ -71,8 +82,7 @@ public class Student extends User {
     /**
      * Establece si el estudiante tiene una beca.
      *
-     * @param grant `true` si el estudiante tiene una beca, `false` en caso
-     * contrario.
+     * @param grant `true` si el estudiante tiene una beca, `false` en caso contrario.
      */
     public void setGrant(boolean grant) {
         this.grant = grant;

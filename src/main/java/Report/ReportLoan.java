@@ -7,6 +7,9 @@ package Report;
  */
 import Loan.Loan;
 
+/**
+ * The type Report loan.
+ */
 public class ReportLoan extends Report {
 
     private Loan loan;
@@ -30,11 +33,11 @@ public class ReportLoan extends Report {
      * Constructor parametrizado para la clase `ReportLoan` que también recibe
      * información de la clase base `Report`.
      *
-     * @param loan El préstamo asociado al informe.
-     * @param dateReport La fecha del informe.
+     * @param loan        El préstamo asociado al informe.
+     * @param dateReport  La fecha del informe.
      * @param description La descripción del informe.
-     * @param title El título del informe.
-     * @param typeReport El tipo de informe.
+     * @param title       El título del informe.
+     * @param typeReport  El tipo de informe.
      */
     public ReportLoan(Loan loan, String dateReport, String description, String title, String typeReport) {
         super(dateReport, description, title, typeReport);

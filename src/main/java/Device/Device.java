@@ -28,11 +28,12 @@ public class Device {
      * Constructor que inicializa una instancia de la clase `Device` con los
      * valores proporcionados.
      *
-     * @param brand La marca del dispositivo.
+     * @param brand       La marca del dispositivo.
      * @param haveCharger Indica si el dispositivo tiene un cargador.
-     * @param id El identificador del dispositivo.
-     * @param isUsable Indica si el dispositivo es utilizable.
-     * @param type El tipo de dispositivo.
+     * @param id          El identificador del dispositivo.
+     * @param isUsable    Indica si el dispositivo es utilizable.
+     * @param isAvailable the is available
+     * @param type        El tipo de dispositivo.
      */
     public Device(String brand, boolean haveCharger, String id, boolean isUsable, boolean isAvailable, String type) {
         this.brand = brand;
@@ -43,10 +44,20 @@ public class Device {
         this.type = type;
     }
 
+    /**
+     * Is available boolean.
+     *
+     * @return the boolean
+     */
     public boolean isAvailable() {
         return isAvailable;
     }
 
+    /**
+     * Sets available.
+     *
+     * @param isAvailable the is available
+     */
     public void setAvailable(boolean isAvailable) {
         this.isAvailable = isAvailable;
     }
@@ -72,8 +83,7 @@ public class Device {
     /**
      * Verifica si el dispositivo tiene un cargador.
      *
-     * @return `true` si el dispositivo tiene un cargador, `false` en caso
-     * contrario.
+     * @return `true` si el dispositivo tiene un cargador, `false` en caso contrario.
      */
     public boolean isHaveCharger() {
         return haveCharger;
@@ -82,8 +92,7 @@ public class Device {
     /**
      * Establece la disponibilidad de un cargador para el dispositivo.
      *
-     * @param haveCharger `true` si el dispositivo tiene un cargador, `false` en
-     * caso contrario.
+     * @param haveCharger `true` si el dispositivo tiene un cargador, `false` en caso contrario.
      */
     public void setHaveCharger(boolean haveCharger) {
         this.haveCharger = haveCharger;
@@ -110,8 +119,7 @@ public class Device {
     /**
      * Verifica si el dispositivo es utilizable.
      *
-     * @return `true` si el dispositivo es utilizable, `false` en caso
-     * contrario.
+     * @return `true` si el dispositivo es utilizable, `false` en caso contrario.
      */
     public boolean isUsable() {
         return isUsable;
@@ -120,8 +128,7 @@ public class Device {
     /**
      * Establece la usabilidad del dispositivo.
      *
-     * @param isUsable `true` si el dispositivo es utilizable, `false` en caso
-     * contrario.
+     * @param isUsable `true` si el dispositivo es utilizable, `false` en caso contrario.
      */
     public void setIsUsable(boolean isUsable) {
         this.isUsable = isUsable;
