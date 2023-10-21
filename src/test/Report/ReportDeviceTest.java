@@ -16,17 +16,17 @@ public class ReportDeviceTest {
     
      @Test
     public void testGetDevice() {
-         Device device = new Device("Samsung", true, "12345", true, "Phone");
+         Device device = new Device("Samsung", true, "12345", true, true,"t");
         ReportDevice reportDevice = new ReportDevice(device, "2023-09-30", "Sample report description", "Sample Report", "PDF");
         assertEquals(device, reportDevice.getDevice());
     }
 
     @Test
     public void testSetDevice() {
-         Device device = new Device("Samsung", true, "12345", true, "Phone");
+        Device device = new Device("Samsung", true, "12345", true, true,"t");
         ReportDevice reportDevice = new ReportDevice(device, "2023-09-30", "Sample report description", "Sample Report", "PDF");
 
-        Device newDevice = new Device("Samsung1", true, "12345", true, "Phone");
+        Device newDevice = new Device("Samsung", true, "12345", true, true,"t");
         reportDevice.setDevice(newDevice);
         
         assertEquals(newDevice, reportDevice.getDevice());
@@ -34,7 +34,7 @@ public class ReportDeviceTest {
 
     @Test
     public void testToString() {
-         Device device = new Device("Samsung", true, "12345", true, "Phone");
+        Device device = new Device("Samsung", true, "12345", true, true,"t");
         ReportDevice reportDevice = new ReportDevice(device, "2023-09-30", "Sample report description", "Sample Report", "PDF");
         
         String expected = "ReportDevice{device=" + device + '}';

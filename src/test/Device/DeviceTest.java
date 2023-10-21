@@ -11,47 +11,79 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  *
  * @author Abdias
  */
 public class DeviceTest {
-    
-     @Test
-    public void testConstructorAndGetters() {
-        Device device = new Device("Samsung", true, "12345", true, "Phone");
 
-        assertEquals("Samsung", device.getBrand());
-        assertTrue(device.isHaveCharger());
-        assertEquals("12345", device.getId());
-        assertTrue(device.isIsUsable());
-        assertEquals("Phone", device.getType());
+    private Device device;
+    @BeforeEach
+    void setUp() {
+        // Crear una instancia de Device antes de cada prueba
+        device = new Device("Samsung", true, "12345", true, true, "Smartphone");
     }
 
     @Test
-    public void testSetters() {
-        Device device = new Device();
+    void testGetBrand() {
+        assertEquals("Samsung", device.getBrand());
+    }
 
+    @Test
+    void testSetBrand() {
         device.setBrand("Apple");
-        device.setHaveCharger(false);
-        device.setId("67890");
-        device.setIsUsable(true);
-        device.setType("Tablet");
-
         assertEquals("Apple", device.getBrand());
+    }
+
+    @Test
+    void testIsHaveCharger() {
+        assertTrue(device.isHaveCharger());
+    }
+
+    @Test
+    void testSetHaveCharger() {
+        device.setHaveCharger(false);
         assertFalse(device.isHaveCharger());
-        assertEquals("67890", device.getId());
-        assertTrue(device.isIsUsable());
+    }
+
+    @Test
+    void testGetId() {
+        assertEquals("12345", device.getId());
+    }
+
+    @Test
+    void testSetId() {
+        device.setId("54321");
+        assertEquals("54321", device.getId());
+    }
+
+    @Test
+    void testIsUsable() {
+        assertTrue(device.isUsable());
+    }
+
+    @Test
+    void testSetIsUsable() {
+        device.setIsUsable(false);
+        assertFalse(device.isUsable());
+    }
+
+    @Test
+    void testGetType() {
+        assertEquals("Smartphone", device.getType());
+    }
+
+    @Test
+    void testSetType() {
+        device.setType("Tablet");
         assertEquals("Tablet", device.getType());
     }
 
     @Test
-    public void testToString() {
-        Device device = new Device("Sony", true, "54321", false, "Laptop");
-
-        String expectedToString = "Device{brand=Sony, haveCharger=true, id=54321, isUsable=false, type=Laptop}";
-        assertEquals(expectedToString, device.toString());
+    void testToString() {
+        assertEquals("Samsung 12345", device.toString());
     }
-    
+
 }

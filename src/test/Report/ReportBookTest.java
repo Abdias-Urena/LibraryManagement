@@ -16,16 +16,16 @@ public class ReportBookTest {
     
     @Test
     public void testGetBook() {
-        Book book = new Book("John Doe", "Fiction", "2023-09-30", "Hardcover", "Sample Title");
+        Book book = new Book("John Doe", "Fiction", "2023-09-30", "Hardcover", "Sample Title","y");
         ReportBook reportBook = new ReportBook(book, "2023-09-30", "Sample report description", "Sample Report", "PDF");
         assertEquals(book, reportBook.getBook());
     }
 
     @Test
     public void testSetBook() {
-        Book book = new Book("John Doe", "Fiction", "2023-09-30", "Hardcover", "Sample Title");
+        Book book = new Book("John Doe", "Fiction", "2023-09-30", "Hardcover", "Sample Title","y");
         ReportBook reportBook = new ReportBook(book, "2023-09-30", "Sample report description", "Sample Report", "PDF");
-        Book newBook = new Book("New book","Action","2023-09-12","Hard","SampleTitle");
+        Book newBook = new Book("New book","Action","2023-09-12","Hard","SampleTitle","y");
         reportBook.setBook(newBook);
         
         assertEquals(newBook, reportBook.getBook());
@@ -33,7 +33,7 @@ public class ReportBookTest {
 
     @Test
     public void testToString() {
-        Book book = new Book("John Doe", "Fiction", "2023-09-30", "Hardcover", "Sample Title");
+        Book book = new Book("John Doe", "Fiction", "2023-09-30", "Hardcover", "Sample Title","y");
         ReportBook reportBook = new ReportBook(book, "2023-09-30", "Sample report description", "Sample Report", "PDF");
         String expected = "ReportBook{book=" + book + '}';
         assertEquals(expected, reportBook.toString());

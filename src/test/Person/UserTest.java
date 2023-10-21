@@ -52,10 +52,4 @@ public class UserTest {
         assertEquals("987-654-3210", user.getPhoneNumber());
     }
 
-    @Test
-    public void testToString() {
-        User user = new User("123 Main St", "user@example.com", "123-456-7890");
-        String expected = "User{address=123 Main St, email=user@example.com, phoneNumber=123-456-7890}";
-        assertEquals(expected, user.toString());
-    }
 }

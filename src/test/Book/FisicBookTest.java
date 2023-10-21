@@ -32,13 +32,14 @@ public class FisicBookTest {
             "2023-10-05",
             "Hardcover",
             "Mystery Novel"
+                ,"y"
         );
 
         assertEquals("Alice Johnson", fisicBook.getAuthor());
         assertEquals("Mystery", fisicBook.getCategory());
         assertEquals("2023-10-05", fisicBook.getPublicationDate());
         assertEquals("Hardcover", fisicBook.getReproduction());
-        assertEquals("Mystery Novel", fisicBook.getTiltle());
+        assertEquals("Mystery Novel", fisicBook.getTitle());
 
         assertTrue(fisicBook.isIsAvailable());
         assertFalse(fisicBook.isIsUsable());

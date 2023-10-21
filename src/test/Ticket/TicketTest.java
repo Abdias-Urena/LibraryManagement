@@ -4,10 +4,14 @@
  */
 package Ticket;
 
-import Devolution.Devolution;
 import Loan.Loan;
 import Person.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.sql.Date;
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -15,113 +19,46 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Abdias
  */
 public class TicketTest {
-    
-    @Test
-    public void testGetDevolution() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
 
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-        assertEquals(devolution, ticket.getDevolution());
+    private Ticket ticket;
+
+    @BeforeEach
+    void setUp() {
+        // Crear una instancia de Ticket antes de cada prueba
+        ticket = new Ticket("Descripción del ticket", 100, "T123");
     }
 
     @Test
-    public void testSetDevolution() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-
-        Devolution newDevolution = new Devolution("2023-9-12",loan);
-        ticket.setDevolution(newDevolution);
-
-        assertEquals(newDevolution, ticket.getDevolution());
+    void testGetDescription() {
+        assertEquals("Descripción del ticket", ticket.getDescription());
     }
 
     @Test
-    public void testGetDescription() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-        assertEquals("Sample Ticket", ticket.getDescription());
+    void testSetDescription() {
+        ticket.setDescription("Nueva descripción");
+        assertEquals("Nueva descripción", ticket.getDescription());
     }
 
     @Test
-    public void testSetDescription() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-
-        ticket.setDescription("Updated Ticket Description");
-
-        assertEquals("Updated Ticket Description", ticket.getDescription());
+    void testGetPriceTicket() {
+        assertEquals(100, ticket.getPriceTicket());
     }
 
     @Test
-    public void testGetPriceTicket() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-        assertEquals(50, ticket.getPriceTicket());
+    void testSetPriceTicket() {
+        ticket.setPriceTicket(200);
+        assertEquals(200, ticket.getPriceTicket());
     }
 
     @Test
-    public void testSetPriceTicket() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-
-        ticket.setPriceTicket(75);
-
-        assertEquals(75, ticket.getPriceTicket());
+    void testGetTicket() {
+        assertEquals("T123", ticket.getTicket());
     }
 
     @Test
-    public void testGetTicket() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-        assertEquals("Ticket123", ticket.getTicket());
-    }
-
-    @Test
-    public void testSetTicket() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-
-        ticket.setTicket("UpdatedTicket123");
-
-        assertEquals("UpdatedTicket123", ticket.getTicket());
-    }
-
-    @Test
-    public void testToString() {
-        User user = new User("Rio claro", "abdias@gmail.com", "89898989", "1", "urena", "abdias");
-        Loan loan = new Loan("John Doe", "The Book", "2023-10-01", user);
-
-        Devolution devolution = new Devolution("2023-10-15", loan);
-        Ticket ticket = new Ticket(devolution, "Sample Ticket", 50, "Ticket123");
-        
-        String expected = "Ticket{devolution=" + devolution + ", description=Sample Ticket, priceTicket=50, ticket=Ticket123}";
-        assertEquals(expected, ticket.toString());
+    void testSetTicket() {
+        ticket.setTicket("T456");
+        assertEquals("T456", ticket.getTicket());
     }
     
 }

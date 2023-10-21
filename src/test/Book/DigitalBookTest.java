@@ -29,14 +29,14 @@ public class DigitalBookTest {
             "Mystery",
             "2023-10-05",
             "E-book",
-            "Mystery Novel"
+            "Mystery Novel","y"
         );
 
         assertEquals("Alice Johnson", digitalBook.getAuthor());
         assertEquals("Mystery", digitalBook.getCategory());
         assertEquals("2023-10-05", digitalBook.getPublicationDate());
         assertEquals("E-book", digitalBook.getReproduction());
-        assertEquals("Mystery Novel", digitalBook.getTiltle());
+        assertEquals("Mystery Novel", digitalBook.getTitle());
 
         assertEquals("https://example.com/book", digitalBook.getUrl());
     }
