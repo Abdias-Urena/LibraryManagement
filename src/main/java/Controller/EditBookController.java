@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import Book.*;
+import Notification.*;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -55,6 +56,7 @@ public class EditBookController implements Initializable {
 
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
     Connection connection = databaseConnection.getConnection();
+    Notification noti = new Notification();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -135,14 +137,16 @@ public class EditBookController implements Initializable {
             int rowsAffected = pst.executeUpdate();
             if (rowsAffected > 0) {
                 System.out.println("Datos insertados con éxito.");
+                noti.modifyNotification("Libro editado", "El libro ha sido editado con éxito","/Images/success.png");
             } else {
                 System.out.println("Error al insertar datos.");
+                noti.modifyNotification("Error", "Error al editar el libro", "/Images/error.png");
             }
             pst.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("Libro editado");
+        noti.modifyNotification("Libro editado", "El libro ha sido editado con éxito","/Images/success.png");
     }
 
 

@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import org.controlsfx.control.CheckComboBox;
+import Notification.Notification;
 
 /**
  * FXML Controller class
@@ -51,6 +52,7 @@ public class RegisterDeviceController implements Initializable {
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
     Connection connection = databaseConnection.getConnection();
     private List<String> checkedItems;
+    Notification notification = new Notification();
 
     /**
      * Initializes the controller class.
@@ -78,6 +80,7 @@ public class RegisterDeviceController implements Initializable {
             return new Device(brand, haveCharger, id, true, true, type);
         } else {
             System.out.println("Por favor, complete todos los campos.");
+            notification.modifyNotification("Error", "Por favor, complete todos los campos.", "/Images/error.png");
         }
         return null;
     }
@@ -109,8 +112,10 @@ public class RegisterDeviceController implements Initializable {
 
                 if (rowsAffected > 0) {
                     System.out.println("Datos insertados con éxito.");
+                    notification.modifyNotification("Éxito", "Datos insertados con éxito.", "/Images/success.png");
                 } else {
                     System.out.println("Error al insertar datos.");
+                    notification.modifyNotification("Error", "Error al insertar datos.", "/Images/error.png");
                 }
 
                 preparedStatement.close();

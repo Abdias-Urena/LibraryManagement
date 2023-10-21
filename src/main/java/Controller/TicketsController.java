@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Label;
+import Notification.Notification;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -49,7 +50,7 @@ public class TicketsController implements Initializable {
 
     ObservableList<String> userList = getUserList();
 
-
+    Notification notification = new Notification();
     @FXML
     void calculatePrice(ActionEvent event) {
         if (verifyHasLoan()) {
@@ -58,7 +59,7 @@ public class TicketsController implements Initializable {
             int price = ticket.calculatePrice(days);
             labelPrice.setText(String.valueOf(price));
         }else {
-            System.out.println("No se puede calcular el precio de un ticket sin una devolución asociada");
+            notification.modifyNotification("Error","No se puede calcular el precio de un ticket sin un prestamo asociada","/Images/error.png");
             labelPrice.setText("0");
         }
     }
@@ -115,6 +116,7 @@ public class TicketsController implements Initializable {
             }
         } else {
             System.out.println("No se puede guardar un ticket con precio 0");
+            notification.modifyNotification("Error","No se encuentra prestamo para este usuario","/Images/error.png");
         }
     }
 

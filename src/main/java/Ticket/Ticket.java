@@ -2,6 +2,11 @@ package Ticket;
 
 import Connection.DatabaseConnection;
 import Interface.IFunctions;
+import javafx.geometry.Pos;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -139,6 +144,8 @@ public class Ticket implements IFunctions {
             return (int) daysDifference * 500;
         }
     }
+
+
 
     @Override
     public String toString() {

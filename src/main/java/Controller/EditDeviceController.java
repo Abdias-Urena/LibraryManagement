@@ -1,6 +1,6 @@
 package Controller;
 
-import Book.DigitalBook;
+import Notification.Notification;
 import Connection.DatabaseConnection;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -45,6 +45,7 @@ public class EditDeviceController implements Initializable {
     private Device listDevice;
 
     private List<String> checkedItems;
+    Notification noti = new Notification();
 
     @FXML
     void editDevice(ActionEvent event) {
@@ -65,6 +66,7 @@ public class EditDeviceController implements Initializable {
             }
         } else {
             System.out.println("Por favor, complete todos los campos.");
+            noti.modifyNotification("Error", "Por favor, complete todos los campos.", "/Images/error.png");
         }
         return null;
     }
@@ -88,8 +90,10 @@ public class EditDeviceController implements Initializable {
 
                 if (rowsAffected > 0) {
                     System.out.println("Datos insertados con éxito.");
+                    noti.modifyNotification("Éxito", "Datos insertados con éxito.", "/Images/success.png");
                 } else {
                     System.out.println("Error al insertar datos.");
+                    noti.modifyNotification("Error", "Error al insertar datos.", "/Images/error.png");
                 }
                 preparedStatement.close();
             } catch (SQLException e) {

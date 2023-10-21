@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import Notification.Notification;
 
 import java.awt.*;
 import java.net.URL;
@@ -68,6 +69,7 @@ public class RegisterBookController implements Initializable {
 
     DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
     Connection connection = databaseConnection.getConnection();
+    Notification noti = new Notification();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -126,10 +128,11 @@ public class RegisterBookController implements Initializable {
 
             if (rowsAffected > 0) {
                 System.out.println("Datos insertados con éxito.");
+                noti.modifyNotification("Libro registrado", "El libro se ha registrado con éxito", "/Images/success.png");
             } else {
                 System.out.println("Error al insertar datos.");
+                noti.modifyNotification("Error", "Error al registrar el libro", "/Images/error.png");
             }
-
             preparedStatement.close();
         } catch (SQLException e) {
             e.printStackTrace();
