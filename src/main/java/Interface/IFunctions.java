@@ -2,6 +2,8 @@ package Interface;
 
 import Ticket.Ticket;
 
+import java.sql.Date;
+
 /**
  * La interfaz `IFunctions` define un conjunto de funciones
  */
@@ -12,5 +14,5 @@ public interface IFunctions {
      *
      * @return La cantidad de días.
      */
-    public Ticket getDays(Ticket ticket);
+    public Date getDays(Ticket id);
 }

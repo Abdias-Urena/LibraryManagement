@@ -1,6 +1,11 @@
 package Ticket;
 
+import Connection.DatabaseConnection;
 import Interface.IFunctions;
+
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 /**
  * La clase `Ticket` representa un ticket relacionado con una devolución.
@@ -16,6 +21,9 @@ public class Ticket implements IFunctions {
 
     private String ticket;
 
+    DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
+    Connection connection = databaseConnection.getConnection();
+
     /**
      * Constructor por defecto para la clase `Ticket`.
      */
@@ -27,7 +35,7 @@ public class Ticket implements IFunctions {
      *
      * @param description La descripción del ticket.
      * @param priceTicket El precio del ticket.
-     * @param ticket El número de ticket.
+     * @param ticket      El número de ticket.
      */
     public Ticket(String description, int priceTicket, String ticket) {
         this.description = description;
@@ -39,6 +47,7 @@ public class Ticket implements IFunctions {
         this.description = description;
         this.priceTicket = priceTicket;
     }
+
     /**
      * Obtiene la descripción del ticket.
      *
@@ -97,9 +106,40 @@ public class Ticket implements IFunctions {
      * {@inheritDoc}
      */
     @Override
-    public Ticket getDays(Ticket ticket){
-        return  ticket;
+    public Date getDays(Ticket id) {
+        try {
+            PreparedStatement pst = connection.prepareStatement("SELECT EXPIRATION_DATE FROM loan WHERE ID = ?;");
+            pst.setString(1, id.getTicket());
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                java.sql.Date expirationDate = rs.getDate("EXPIRATION_DATE");
+                pst.close();
+                rs.close();
+                System.out.println(expirationDate);
+
+                return expirationDate;
+            } else {
+                pst.close();
+                rs.close();
+                throw new RuntimeException("No se encontraron resultados para el ID proporcionado.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+
+    public int calculatePrice(LocalDate days) {
+        LocalDate fechaActual = LocalDate.now();
+        long daysDifference = ChronoUnit.DAYS.between(days,fechaActual);
+        System.out.println(daysDifference);
+        if (daysDifference < 0) {
+            return 0;
+        } else {
+            return (int) daysDifference * 500;
+        }
+    }
+
     @Override
     public String toString() {
         return "Ticket{" + ", description=" + description + ", priceTicket=" + priceTicket + ", ticket=" + ticket + '}';

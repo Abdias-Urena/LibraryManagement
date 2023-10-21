@@ -119,7 +119,7 @@ public class RegisterBookController implements Initializable {
                 preparedStatement.setString(6, book.getType());
                 preparedStatement.setString(7, "N");
                 preparedStatement.setString(8, "Y");
-                preparedStatement.setString(9, "N");
+                preparedStatement.setString(9, "Y");
             }
 
             int rowsAffected = preparedStatement.executeUpdate();

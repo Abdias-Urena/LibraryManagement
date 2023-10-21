@@ -1,9 +1,11 @@
 package Controller;
 
+import Book.DigitalBook;
 import Connection.DatabaseConnection;
 import Person.Student;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -124,7 +126,13 @@ public class StudentTableController implements Initializable {
         colCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
         colTelefono.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         colCarrera.setCellValueFactory(new PropertyValueFactory<>("career"));
-        colbeca.setCellValueFactory(new PropertyValueFactory<>("grant"));
+        colbeca.setCellValueFactory(cellData -> {
+            if (cellData.getValue().isGrant()) {
+                return new SimpleStringProperty("Tiene");
+            } else {
+                return new SimpleStringProperty("No tiene");
+            }
+        });
         students = getStudentList();
         tablaEstudiantes.setItems(students);
     }
@@ -135,7 +143,13 @@ public class StudentTableController implements Initializable {
         colCorreo.setCellValueFactory(new PropertyValueFactory<>("email"));
         colTelefono.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         colCarrera.setCellValueFactory(new PropertyValueFactory<>("career"));
-        colbeca.setCellValueFactory(new PropertyValueFactory<>("grant"));
+        colbeca.setCellValueFactory(cellData -> {
+            if (cellData.getValue().isGrant()) {
+                return new SimpleStringProperty("Tiene");
+            } else {
+                return new SimpleStringProperty("No tiene");
+            }
+        });
 
         ObservableList<Student> filteredStudents = students.filtered(student ->
                 student.getId().toLowerCase().contains(id.toLowerCase()) ||

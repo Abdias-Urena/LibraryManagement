@@ -180,7 +180,7 @@ public class TicketsTableController implements Initializable {
         try {
             PreparedStatement pst = connection.prepareStatement("DELETE FROM TICKET WHERE DESCRIPTION = ? AND ID = ?");
             pst.setString(1, ticket.getDescription());
-            pst.setString(2, ticket.getTicket()); // Asume que hay un campo "ID" en la tabla que identifica de manera única cada libro.
+            pst.setString(2, ticket.getTicket());
             int rowsAffected = pst.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
